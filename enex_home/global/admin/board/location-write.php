@@ -3,12 +3,45 @@ include $_SERVER["DOCUMENT_ROOT"]."/global/include/admin_header.php";
 $boardConfig = new boardConfigClass();
 $location_code = "false";
 
+// 상품 리스트 불러오기
+
+function get_location_select($search=""){
+	$search = preg_replace("/\s+/", "", $search);
+
+	$sql_query01 = mysql_query(" select * from gc_board_k_prod01 where title like '%".$search."%' ");
+	$sql_query02 = mysql_query(" select * from gc_board_k_prod02 where title like '%".$search."%' ");
+
+	$prod01_select = "전시제품 : <select style='height:30px;'>";
+
+	$prod01_select .= "<optgroup label='현재 전시 주방제품'>";
+	while ($row = mysql_fetch_array($sql_query01)) {
+		$prod01_select .= "<option value=00001".$row['idx'].">";
+		$prod01_select .= $row['title'];
+		$prod01_select .= "</option>";
+	}
+	$prod01_select .= "</optgroup>";
+
+	$prod01_select .= "<optgroup label='현재 전시 주방제품'>";
+	while ($row = mysql_fetch_array($sql_query02)) {
+		$prod01_select .= "<option value=00002".$row['idx'].">";
+		$prod01_select .= $row['title'];
+		$prod01_select .= "</option>";
+	}
+	$prod01_select .= "</optgroup>";
+
+	$prod01_select .= "</select>";
+
+	return $prod01_select;
+}
+
 if($_REQUEST[action] == "addProduct")
 {
 	global $gDBInfo;
 	$db = new dbClass();
 	$db->openDB($gDBInfo);
-	$sql = "insert into gc_branch_prd_list (br_idx, prd_kitchen, prd_etc) values(" .$_REQUEST[idx] . ", '" . $_REQUEST[prd_kitchen] . "', '" . $_REQUEST[prd_etc]  . "')";
+	$sql = "insert into gc_branch_prd_list (br_idx, prd_kitchen, prd_kitchen_table, prd_kitchen_idx, prd_etc, prd_etc_table, prd_etc_idx) values(" .$_REQUEST[idx] . ", '" . serialize($prd_kitchen) . "', '".$_REQUEST[prd_kitchen_table]."','".$_REQUEST[prd_kitchen_idx]."', '" . $_REQUEST[prd_etc]  . "','".$_REQUEST[prd_etc_table]."','".$_REQUEST[prd_etc_idx]."')";
+
+	echo $sql;
 
 	$db->queryDB($sql);
 }else if($_REQUEST[action] == "delProduct"){
@@ -18,6 +51,8 @@ if($_REQUEST[action] == "addProduct")
 	$sql = "delete from gc_branch_prd_list where idx = " . $_REQUEST[del_idx];
 	$db->queryDB($sql);
 	echo "<script text='javascript/text'>document.location='location-write.php?mode=" . $_REQUEST[mode]. "&code=" . $_REQUEST[code] . "&idx=". $_REQUEST[idx]. "'</script>";
+}else if($_REQUEST[action] == "modifyProduct"){
+
 }
 
 
@@ -315,29 +350,67 @@ function chkForm() {
                                         </tr>
                                         <tr>
                                           <td>
+
+
+
+																						<div style='padding:10px; height:30px;'>
+																							<div class='select_area' style='float:left;'><?=get_location_select();?></div>&nbsp;<input type='text' class='select_word' name='search' style='height:100%;'> <button class='location_search' onclick="return false;" style='height:100%;'>검색</button>
+																						</div>
+
 										  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+
+
                                   <tr>
                                     <td width="10">&nbsp;</td>
                                     <td><table width="100%" border="1" cellspacing="0" cellpadding="0" >
 									 <tr>
-                                    <td width="300" align="center">현재 전시 주방제품</td>
-                                   <td align="center">&nbsp;현재 전시 붙박이, 인테리어제품</td>
+                                    <td width="400" align="center" style='height:35px;'>현재 전시 주방제품</td>
+                                   <td width="400" align="center">&nbsp;현재 전시 붙박이, 인테리어제품</td>
                                    <td align="center">&nbsp;줄 삭제/추가</td>
 									</tr>
-								  <?
+								  								<?
                                   for($i=0;$i < $board->rowCnt; $i++) {
                                   ?>
-                                  <tr>
-                                    <td width="300" align="center">&nbsp;<?=$board->prd_kitchen[$i]?></td>
-                                    <td align="center"><?=$board->prd_etc[$i]?></td>
-									<td align="center"><a href="javascript:delProduct(<?=$board->idx2[$i]?>)">삭제</a></td>
-                                  </tr>
-								  <? } ?>
-									 <tr>
-                                    <td width="300" align="center"><input type="text" id="prd_kitchen" name="prd_kitchen"></td>
-                                   <td align="center">&nbsp;<input type="text" id="prd_etc" name="prd_etc">  </td>
-                                   <td align="center">&nbsp;<a href="javascript:addProduct(<?=$board->idx[$i]?>)">추가</a></td>
-									</tr>
+																	<?$sql_values = mysql_query(" select * from gc_branch_prd_list where idx = ".$board->idx2[$i]);?>
+																	<?while ($row = mysql_fetch_array($sql_values)) {?>
+	                                  <tr>
+	                                    <td width="400" align="center" style='padding:5px;'>
+																				<input type='hidden' name="idx[]" value="<?=$row['idx']?>">
+																				<input type='hidden' name="prd_kitchen_table[]" value="<?=$row['prd_kitchen_table']?>">
+																				<input type='hidden' name="prd_kitchen_idx[]" value="<?=$row['prd_kitchen_idx']?>">
+																				<input class='prd_kitchen[]' style='height:30px; width:300px;' type='text' value='<?=$board->prd_kitchen[$i]?>'>
+																				<button class='select_apply' style='height:30px; border:none; background:#ccc;' onclick='return false;'>적용</button>
+																			</td>
+	                                    <td align="center">
+																				<input type='hidden' name="prd_etc_table[]" value="<?=$row['prd_etc_table']?>">
+																				<input type='hidden' name="prd_etc_idx[]" value="<?=$row['prd_etc_idx']?>">
+																				<input class='prd_etc[]' style='height:30px; width:300px;' type='text' value='<?=$board->prd_etc[$i]?>'>
+																				<button class='select_apply2' style='height:30px; border:none; background:#ccc;' onclick='return false;'>적용</button>
+																			</td>
+																			<td align="center"><a href="javascript:delProduct(<?=$board->idx2[$i]?>)">삭제</a></td>
+	                                  </tr>
+																		<?}?>
+								  								<? } ?>
+
+									 								<tr>
+                                  	<td width="400" align="center" style='padding:5px;'>
+																			<input class='prd_kitchen_table' name='prd_kitchen_table' type='hidden'>
+																			<input class='prd_kitchen_idx' name='prd_kitchen_idx' type='hidden'>
+																			<input class='prd_kitchen' name='prd_kitchen' style='height:30px; width:300px;' type='text' readonly>
+																			<button class='select_apply' style='height:30px; border:none; background:#ccc; line-height: 0px;' onclick='return false;'>적용</button>
+																		</td>
+
+																		<td width="400" align="center" style='padding:5px;'>
+																			<input class='prd_etc_table' name='prd_etc_table' type='hidden'>
+																			<input class='prd_etc_idx' name='prd_etc_idx' type='hidden'>
+																			<input class='prd_etc' name='prd_etc' style='height:30px; width:300px;' type='text' readonly>
+																			<button class='select_apply2' style='height:30px; border:none; background:#ccc; line-height: 0px;' onclick='return false;'>적용</button>
+																		</td>
+
+                                   	<td align="center"><a href="javascript:addProduct(<?=$board->idx[$i]?>)">추가</a></td>
+																 	</tr>
+
                                 </table></td>
                                         </tr>
                                         <tr>
@@ -390,16 +463,107 @@ function chkForm() {
                     </table>
 
 <script type="text/javascript">
+$(function(){
+
+	$('.location_search').click(function(){
+		$.ajax({
+			url: "location.search.ajax.php",
+			data: {
+							"word":	$('.select_word').val()
+						},
+			success: function(data){
+				$('.select_area').html(data);
+			}
+		})
+	})
+
+	$('.select_apply').click(function(){
+		var vals = $('.select_area').children('select').val();
+
+
+		if(vals.substring(0,5) == 00001){ // gc_board_k_prod01 일때
+			$(this).parent().children("input.prd_kitchen_table").val("gc_board_k_prod01");
+		}else if(vals.substring(0,5) == 00002){// gc_board_k_prod02 일때
+			$(this).parent().children("input.prd_kitchen_table").val("gc_board_k_prod02");
+		}
+		$(this).parent().children("input.prd_kitchen_idx").val(vals.substring(5));
+
+		var th = $(this);
+
+		$('.select_area').children('select').children('optgroup').children('option').each(function(index){
+			if(vals == $(this).val()){
+				th.parent().children("input.prd_kitchen").val($(this).text());
+				th.parent().children("input.prd_kitchen").attr('readonly',false);
+			}
+		})
+	})
+
+	$('.select_apply2').click(function(){
+		var vals = $('.select_area').children('select').val();
+		if(vals.substring(0,5) == 00001){ // gc_board_k_prod01 일때
+			$(this).parent().children("input.prd_etc_table").val("gc_board_k_prod01");
+		}else if(vals.substring(0,5) == 00002){// gc_board_k_prod02 일때
+			$(this).parent().children("input.prd_etc_table").val("gc_board_k_prod02");
+		}
+		$(this).parent().children("input.prd_etc_idx").val(vals.substring(5));
+
+		var th = $(this);
+
+		$('.select_area').children('select').children('optgroup').children('option').each(function(index){
+			if(vals == $(this).val()){
+				th.parent().children("input.prd_etc").val($(this).text());
+				th.parent().children("input.prd_etc").attr('readonly',false);
+			}
+		})
+
+	})
+
+
+})
+
+
+
 function delProduct(idx){
 	if(confirm("정말 삭제하시겠습니까?") == true){
 		document.location = "location-write.php?action=delProduct" + "&mode=<?=$_REQUEST[mode]?>&code=<?=$_REQUEST[code]?>&del_idx=" + idx + "&idx=<?=$_REQUEST[idx]?>"
 	}
 }
+
+function modifyProduct(idx){
+	if(confirm("수정 하시겠습니까?") == true){
+		document.location = "location-write.php?action=modifyProduct" + "&mode=<?=$_REQUEST[mode]?>&code=<?=$_REQUEST[code]?>&del_idx=" + idx + "&idx=<?=$_REQUEST[idx]?>"
+	}
+}
+
 function addProduct(){
 	if(confirm("추가하시겠습니까?") == true){
-	var prd_kitchen = $("#prd_kitchen").val();
-	var prd_etc = $("#prd_etc").val();
-	document.location = "location-write.php?prd_kitchen=" + prd_kitchen + "&prd_etc=" + prd_etc + "&action=addProduct" + "&mode=<?=$_REQUEST[mode]?>&code=<?=$_REQUEST[code]?>&idx=<?=$_REQUEST[idx]?>"
+	var prd_kitchen = $("input.prd_kitchen").last().val();
+	var prd_kitchen_table = $("input.prd_kitchen_table").last().val();
+	var prd_kitchen_idx = $("input.prd_kitchen_idx").last().val();
+
+	var prd_etc = $("input.prd_etc").last().val();
+	var prd_etc_table = $("input.prd_etc_table").last().val();
+	var prd_etc_idx = $("input.prd_etc_idx").last().val();
+
+	$.ajax({
+		url: "location.add.ajax.php",
+		data: {
+						"prd_kitchen":	prd_kitchen,
+						"prd_kitchen_table":	prd_kitchen_table,
+						"prd_kitchen_idx":	prd_kitchen_idx,
+						"prd_etc":	prd_etc,
+						"prd_etc_table":	prd_etc_table,
+						"prd_etc_idx":	prd_etc_idx,
+						"mode":	"<?=$_REQUEST[mode]?>",
+						"code": "<?=$_REQUEST[code]?>",
+						"idx": "<?=$_REQUEST[idx]?>"
+					},
+		success: function(){
+			location.reload();
+		}
+	})
+
+	//document.location = "location-write.php?prd_etc=" + prd_etc + "&prd_etc_table=" + prd_etc_table +"&prd_etc_idx=" + prd_etc_idx+"&prd_kitchen=" + prd_kitchen + "&prd_kitchen_table=" + prd_kitchen_table +"&prd_kitchen_idx=" + prd_kitchen_idx + "&action=addProduct" + "&mode=<?=$_REQUEST[mode]?>&code=<?=$_REQUEST[code]?>&idx=<?=$_REQUEST[idx]?>"
 	}
 
 }

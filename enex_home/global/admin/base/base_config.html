@@ -1,0 +1,223 @@
+<?
+include $_SERVER["DOCUMENT_ROOT"]."/include/admin_header.php";
+$member = new memberClass();
+$member->nowPage= $member->startPage          = $_REQUEST['nowPage']?$_REQUEST['nowPage']:1;
+if($_REQUEST[key]) 
+    $member->key = $_REQUEST[key];
+if($_REQUEST[word]) 
+    $member->word = $_REQUEST[word];
+if($_REQUEST[sdate]) 
+    $member->sdate = $_REQUEST[sdate];
+if($_REQUEST[edate]) 
+    $member->edate = $_REQUEST[edate];
+    
+$member->searchId = $_COOKIE['ADMINUSERID'];
+$member->getMemberList();
+?>
+<script>
+    function chkForm() {
+        if(confirm('삭제하시겠습니까?')) {
+            return true;
+        }
+        return false;
+    }
+</script>
+    <script type="text/javascript" src="/js/external/ajaxupload.js"></script>
+    <link rel="stylesheet" href="/css/external/ajaxupload.css" type="text/css" media="all" />
+    <style>
+        .content {margin: 20px 0px}
+        .content td {color:#000;padding-left:20px}
+    </style>
+	<script type="text/javascript">/*<![CDATA[*/
+	var addHtml = "";
+	addHtml += "<div style='float:left;width:200px'>";
+	addHtml += "<input type='text' name='sdate[]' style='width:80px;margin:2px 5px 2px 5px' class='date'> ~ ";
+	addHtml += "<input type='text' name='edate[]' style='width:80px;margin:2px 5px 2px 5px' class='date'>";
+	addHtml += "</div>";
+	$(function(){
+        $('#peak_date_add').live("click", function() {
+            var newAddHtml = addHtml;
+            newAddHtml = newAddHtml.replace("sdate", "peak_sdate");
+            newAddHtml = newAddHtml.replace("edate", "peak_edate");
+            alert(newAddHtml);
+            $('#peak_list').append(newAddHtml);
+        });
+        
+        $('#subpeak_date_add').live("click", function() {
+            var newAddHtml = addHtml;
+            newAddHtml = newAddHtml.replace("sdate", "sub_peak_sdate");
+            newAddHtml = newAddHtml.replace("edate", "sub_peak_edate");
+            alert(newAddHtml);
+            $('#subpeak_list').append(newAddHtml);
+        });
+	});/*]]>*/</script>
+	</head>
+                      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td height="30">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td><img src="/admin/images/ad_ic_listbox01.gif" width="14" height="14" align="absmiddle"> <font color="000000" style="font-size:15px"><strong>기본관리</strong></font></td>
+                              </tr>
+                              <tr>
+                                <td height="8"></td>
+                              </tr>
+                              <tr>
+                                <td height="1" bgcolor="d8d8d8"></td>
+                              </tr>
+                            </table></td>
+                          </tr>
+                          <form method="post" id="sFrom" name="sForm" onsubmit="return chkForm(this)" enctype="multipart/form-data">
+                          <input type="hidden" name="type" value="<?=$_REQUEST[type]?>">
+                          <tr>
+                            <td height="20">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td>
+                                <div class="content">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="e5e5e5">
+                                <tr>
+                                    <td height="26" colspan="2" bgcolor="f7f7f7">◎ 기본설정</td>
+                                </tr>                                   
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">타이틀명</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="title" id="title" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->title?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">사이트명</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="site_name" id="site_name" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->site_name?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">회사명</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="company_name" id="company_name" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->company_name?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">대표자명</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="ceo_name" id="ceo_name" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->ceo_name?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">대표이메일</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="ceo_email" id="ceo_email" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->ceo_email?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">대표번호</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="company_tel" id="company_tel" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->company_tel?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">팩스번호</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="company_fax" id="company_fax" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->company_fax?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">사업자번호</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="business_no" id="business_no" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->business_no?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">통신판매번호</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="internet_regist_no" id="internet_regist_no" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->internet_regist_no?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">사업자 주소</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="address" id="address" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->address?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">정보관리책임자</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="manager_name" id="manager_name" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->manager_name?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">정보책임자 이메일</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="manager_email" id="manager_email" type="text" class="txtbox" style="width:250px" value="<?=$baseConfig->manager_email?>">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">로고파일</td>
+                                    <td bgcolor="#FFFFFF">
+                                    <input name="site_logo" id="site_logo" type="file" class="txtbox" style="width:250px">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="26" bgcolor="f7f7f7">메타태그</td>
+                                    <td bgcolor="#FFFFFF"><textarea name="meta_tag" id="meta_tag" style="width:100%;height:200px"><?=$config->meta_tag?></textarea></td>
+                                </tr>
+
+                                </table>
+                                </div>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                  <tr>
+                                    <td>
+                                        <div style="float:left"  class="button" id="btnAll">전체선택</div>
+                                        <div style="float:left"  class="button" id="btnDel">선택삭제</div>
+                                        <div style="float:left"  class="button" id="btnAdd">항목추가</div>
+                                        <div style="float:right" class="button" id="btnSave">저장</div>
+                                    </td>
+                                  </tr>
+                                </table>                            
+                            
+                            </td>
+                          </tr>
+                          </form>
+                        </table>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td height="30">&nbsp;</td>
+                      </tr>
+                    </table>
+                    
+<?
+include $_SERVER["DOCUMENT_ROOT"]."/include/admin_footer.php";
+?>
+
+<script language="javascript">
+    $.datepicker.setDefaults({
+        monthNames: ['년 1월','년 2월','년 3월','년 4월','년 5월','년 6월','년 7월','년 8월','년 9월','년 10월','년 11월','년 12월'],
+        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+        showMonthAfterYear:true,
+        dateFormat: 'yy-mm-dd'
+        //buttonImageOnly: true,
+        //buttonText: "달력",
+        //buttonImage: "/ui/images/calendar.gif"
+    });
+
+$(function() {
+	$("input[name*=_date]").datepicker({
+	    onSelect: function(dateText, inst) {
+	    }
+	});
+	
+	$('#checkbox').click(function() {
+	    $('.checkbox').attr("checked", $(this).attr("checked"));
+	});
+	
+});
+	
+
+</script>
+
