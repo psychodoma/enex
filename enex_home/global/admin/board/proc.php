@@ -5,7 +5,7 @@ include $_SERVER["DOCUMENT_ROOT"]."/global.inc.php";
 $boardConfig = new boardConfigClass();
 
 
-//print_r($_POST); 
+//print_r($_POST);
 
 $location_code = "false";
 
@@ -26,7 +26,7 @@ if($_REQUEST[code]) {
     $boardConfig->getBoardConfig();
     if($boardConfig->code == "") {
         echo "<script>alert('CODE 정보가 없습니다.');</script>";
-        exit;        
+        exit;
     }
 } else {
     echo "<script>alert('CODE 정보가 없습니다.');</script>";
@@ -34,41 +34,49 @@ if($_REQUEST[code]) {
 }
 
 function send_mail_with_file($from_email,$from_name,$to_email,$subject,$body,$file){
-	 if (strlen($to_email)==0) return 0; 
-	$mailheaders .= "From: $from_name<$from_email> \r\n"; 
-	$mailheaders .= "Reply-To: $from_name<$from_email>\r\n"; 
-	$mailheaders .= "Return-Path: $from_name<$from_email>\r\n"; 
+	 if (strlen($to_email)==0) return 0;
+	$mailheaders .= "From: $from_name<$from_email> \r\n";
+	$mailheaders .= "Reply-To: $from_name<$from_email>\r\n";
+	$mailheaders .= "Return-Path: $from_name<$from_email>\r\n";
 	$body = $body."\r\n\r\n";
 	if(is_array($_FILES) && count($_FILES)>0 &&  $_FILES['file'][size][0] > 0) {
-		$boundary = uniqid("part"); 
+		$boundary = uniqid("part");
 		if (strlen($file[type])==0) $file[type] = "application/octet-stream";
 		$fp = fopen($_FILES['file'][tmp_name][0], "r");
 		$file_content = fread($fp, $_FILES['file'][size][0]);
 		fclose($fp);
 
 
-		$mailheaders .= "MIME-Version: 1.0\r\n"; 
+		$mailheaders .= "MIME-Version: 1.0\r\n";
 		$mailheaders .= "Content-Type: Multipart/mixed; boundary = \"".$boundary."\"";
- 
-		$bodytext = "This is a multi-part message in MIME format.\r\n\r\n"; 
-		$bodytext .= "--".$boundary."\r\n"; 
-		$bodytext .= "Content-Type: text/plain; charset=\"utf-8\"\r\n"; 
-		$bodytext .= "Content-Transfer-Encoding: base64\r\n\r\n"; 
+
+		$bodytext = "This is a multi-part message in MIME format.\r\n\r\n";
+		$bodytext .= "--".$boundary."\r\n";
+		$bodytext .= "Content-Type: text/plain; charset=\"utf-8\"\r\n";
+		$bodytext .= "Content-Transfer-Encoding: base64\r\n\r\n";
 		$bodytext .= chunk_split(base64_encode($body))."\r\n\r\n";
-		$bodytext .= "--".$boundary."\r\n"; 
+		$bodytext .= "--".$boundary."\r\n";
 		$bodytext .= "Content-Type: ".$file[type]."; name=\"".$file[name][0]."\"\r\n";
-		 $bodytext .= "Content-Transfer-Encoding: base64\r\n"; 
+		 $bodytext .= "Content-Transfer-Encoding: base64\r\n";
 		$bodytext .= "Content-Disposition: attachment; filename=\"".$file[name][0]."\"\r\n\r\n";
 		 $bodytext .= chunk_split(base64_encode($file_content))."\r\n\r\n";
-		$bodytext .= "--".$boundary."--"; 
-	} else { 
-		
-		$mailheaders .= "Content-Type: text/plain; charset=\"utf-8\"\r\n\r\n"; 
-		$bodytext = $body . "\r\n\r\n"; 
-	} 
-	if(!mail($to_email,$subject,$bodytext,$mailheaders)) {return 0;} 
-	return 1; 
+		$bodytext .= "--".$boundary."--";
+	} else {
+
+		$mailheaders .= "Content-Type: text/plain; charset=\"utf-8\"\r\n\r\n";
+		$bodytext = $body . "\r\n\r\n";
+	}
+	if(!mail($to_email,$subject,$bodytext,$mailheaders)) {return 0;}
+	return 1;
 }
+
+
+
+
+
+
+
+
 
 /***************************************************
  ACTION 정의 (mode => write, update, delete, reply) act가 있어야함.
@@ -108,13 +116,13 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             $board->status = (isset($_POST[status]))?$_POST[status]:2; /*1 공지, 2 일반, 0 비노출*/
 			if($_POST[arrival]) {$board->arrival =$_POST[arrival];}
             $board->insertBoard();
-            
+
             // 첨부파일 업로드
             if($boardConfig->board_upload_count > 0 && is_array($_FILES)) {
                 for($i=0; $i<count($_FILES['file']['name']); $i++) {
                     if($_FILES['file']['name'][$i] != "") {
-                        $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";    
-                    
+                        $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";
+
                         $board->file_name  = $_FILES["file"][name][$i];
                         $board->file_path  = $uploadName;
                         $board->file_size  = $_FILES["file"][size][$i];
@@ -122,7 +130,7 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
                         $board->file_order = $i+1;
                         $board->insertBoardFile();
                }} }
-       
+
 			/* 2016-07-25 오펠라 컨텐츠 등록 by David */
 //			if($_REQUEST[code] == "o_prd_office"){
 				$contents = $_POST[content_value];
@@ -137,10 +145,10 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
 					$board->comment_write_ip = $_SERVER["REMOTE_ADDR"];
 					$board->comment_status = $_SERVER["REMOTE_ADDR"];
                     $board->insertBoardComment();
-				}	
+				}
 //			}
 			/* 2016-07-25 오펠라 컨텐츠 등록 by David */
-            // 오펠라 제품소개의 경우 추가이미지 저장 
+            // 오펠라 제품소개의 경우 추가이미지 저장
             /*
             		[type]
             		(upfile1)제품이미지 : prod_img
@@ -153,8 +161,8 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             if( $boardConfig->board_skin == "o_product" ) {
 				  $i = 0;
 				  if($_FILES['file']['name'][$i] != "") {
-					  $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";    
-				  
+					  $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";
+
 					  $board->file_name  = $_FILES["file"][name][$i];
 					  $board->file_path  = $uploadName;
 					  $board->file_size  = $_FILES["file"][size][$i];
@@ -164,15 +172,15 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
 				  }
 					for( $i = 1 ; $i < 7 ; $i++ ) {
 					  if($_FILES['upfile'.$i]['name'] != "") {
-						  $uploadName = $_FILES["upfile".$i][name]?utilClass::gcUpload($_FILES["upfile".$i][name],$_FILES["upfile".$i][tmp_name],$_FILES["upfile".$i][size], $_REQUEST[code]):"";    
-					  
+						  $uploadName = $_FILES["upfile".$i][name]?utilClass::gcUpload($_FILES["upfile".$i][name],$_FILES["upfile".$i][tmp_name],$_FILES["upfile".$i][size], $_REQUEST[code]):"";
+
 						  $file_name  = $_FILES["upfile".$i][name];
 						  $file_path  = $uploadName;
 					  } else {
 						$file_name = "";
 						$file_path = "";
 					  }
-										  
+
 					if( $i == 1 ) $type  = "prod_img";
 					else if( $i == 2 ) $type  = "tdl_img";
 					else if( $i == 3 ) $type  = "ext_img";
@@ -180,7 +188,7 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
 					else if( $i == 5 ) $type  = "color_img";
 					else if( $i == 6 ) $type  = "layout_img";
 
-					$bidx = $board->idx;	              
+					$bidx = $board->idx;
 					$query = "INSERT INTO gc_board_sub_file( bidx, code, type, file_name, file_path, regdate )
 										VALUES( '{$bidx}', '{$_REQUEST[code]}', '{$type}', '{$file_name}', '{$file_path}', now() )";
 					mysql_query($query);
@@ -188,24 +196,24 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             } else if( $boardConfig->board_skin == "o_portfolio" ) {
 
 				  if($_FILES['upfile']['name'] != "") {
-					  $uploadName = $_FILES["upfile"][name]?utilClass::gcUpload($_FILES["upfile"][name],$_FILES["upfile"][tmp_name],$_FILES["upfile"][size], $_REQUEST[code]):"";    
-				  
+					  $uploadName = $_FILES["upfile"][name]?utilClass::gcUpload($_FILES["upfile"][name],$_FILES["upfile"][tmp_name],$_FILES["upfile"][size], $_REQUEST[code]):"";
+
 					  $file_name  = $_FILES["upfile"][name];
 					  $file_path  = $uploadName;
 				  } else {
 					 $file_name = "";
 					 $file_path = "";
-				  }             
+				  }
 				  $type  = "logo_img";
-				  $bidx = $board->idx;	                  
-				   
+				  $bidx = $board->idx;
+
 				  $query = "INSERT INTO gc_board_sub_file( bidx, code, type, file_name, file_path, regdate )
 									VALUES( '{$bidx}', '{$_REQUEST[code]}', '{$type}', '{$file_name}', '{$file_path}', now() )";
-				 
+
 				  mysql_query($query);
             }
-			
-			
+
+
 			if($_REQUEST[finishmove] == "yes"){
 	            echo "<script>alert(' finish 등록되었습니다.');location='".$_SERVER['HTTP_REFERER'] ."'</script>";
 			}else{
@@ -241,6 +249,37 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             $board->depth_code = $_POST[sido];
             $board->depth_step = $_POST[gugun];
 			$board->updateBoard();
+
+			$prd_index = 0;
+			for ($i=0; $i < count($_POST['prd_kitchen_table1']); $i++) {
+
+				$prd_query = " update gc_branch_prd_list set ";
+
+				$prd_query .= "prd_kitchen='".$_POST['prd_kitchen1'][$i]."',";
+				$prd_query .= "prd_kitchen_table='".$_POST['prd_kitchen_table1'][$i]."',";
+				$prd_query .= "prd_kitchen_idx='".$_POST['prd_kitchen_idx1'][$i]."',";
+				$prd_query .= "prd_etc='".$_POST['prd_etc1'][$i]."',";
+				$prd_query .= "prd_etc_table='".$_POST['prd_etc_table1'][$i]."',";
+				$prd_query .= "prd_etc_idx='".$_POST['prd_etc_idx1'][$i]."'";
+
+				$prd_query .= " where idx =".$_POST['idx1'][$i];
+
+
+				mysql_query($prd_query);
+
+				//echo $prd_query;
+				//echo "-------------";
+
+			}
+
+			//exit();
+
+
+
+
+
+
+
 
             echo "<script>alert('수정되었습니다.');location='location-write.php?mode=view&idx=".$idx."&code=".$_REQUEST[code]."'</script>";
 		break;
@@ -278,28 +317,28 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             $board->notice = $_POST[notice];
             $board->recommend_cnt = 0;
             $board->status = (isset($_POST[status]))?$_POST[status]:2; /*1 공지, 2 일반, 0 비노출*/
-			
+
 			if(isset($_POST[arrival_ck]) != ''){
 				$board->arrival = $_POST[arrival_ck];
-			} 
+			}
 			//if($board->arrival){$board->arrival = (isset($_POST[arrival]))?1:0;}
-			
-            
+
+
 			$board->updateBoard();
-            
+
             for($i=0; $i < count($_REQUEST[file_del]);$i++) {
                 $board->board_idx  = $_REQUEST[idx];
                 $board->file_order = $_REQUEST[file_del][$i];
                 $board->deleteBoardFile();
             }
-            
-            
+
+
             // 첨부파일 업로드
             if($boardConfig->board_upload_count > 0 && is_array($_FILES)) {
                 //print_r($_FILES);
                 for($i=0; $i<count($_FILES['file']['name']); $i++) {
                     if($_FILES['file']['name'][$i] != "") {
-                        $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";    
+                        $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";
                         //echo $_FILES["file"][name][$i]."<br>";
                         $board->file_name  = $_FILES["file"][name][$i];
                         $board->file_path  = $uploadName;
@@ -346,7 +385,7 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
 				}
 
 
-            // 오펠라 제품소개의 경우 추가이미지 저장 
+            // 오펠라 제품소개의 경우 추가이미지 저장
             /*
             		[type]
             		(upfile1)제품이미지 : prod_img
@@ -358,8 +397,8 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             if( $boardConfig->board_skin == "o_product" ) {
             	$i = 0;
               if($_FILES['file']['name'][$i] != "") {
-                  $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";    
-              
+                  $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";
+
                   $board->file_name  = $_FILES["file"][name][$i];
                   $board->file_path  = $uploadName;
                   $board->file_size  = $_FILES["file"][size][$i];
@@ -367,23 +406,23 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
                   $board->file_order = $i+1;
                   $board->insertBoardFile();
               }
-              
+
             	for( $i = 1 ; $i < 7 ; $i++ ) {
 	              if($_FILES['upfile'.$i]['name'] != "") {
-                  $uploadName = $_FILES["upfile".$i][name]?utilClass::gcUpload($_FILES["upfile".$i][name],$_FILES["upfile".$i][tmp_name],$_FILES["upfile".$i][size], $_REQUEST[code]):"";    
-              
+                  $uploadName = $_FILES["upfile".$i][name]?utilClass::gcUpload($_FILES["upfile".$i][name],$_FILES["upfile".$i][tmp_name],$_FILES["upfile".$i][size], $_REQUEST[code]):"";
+
                   $file_name  = $_FILES["upfile".$i][name];
                   $file_path  = $uploadName;
-	             
+
 	                if( $i == 1 ) $type  = "prod_img";
 	                else if( $i == 2 ) $type  = "tdl_img";
 	                else if( $i == 3 ) $type  = "ext_img";
 	                else if( $i == 4 ) $type  = "size_img";
 	                else if( $i == 5 ) $type  = "color_img";
 	                else if( $i == 6 ) $type  = "layout_img";
-	
+
 	                $bidx = $board->idx;
-	                
+
 	                // 기존파일 있으면 삭제
 	            		$query = "SELECT * FROM gc_board_sub_file WHERE code='{$_REQUEST[code]}' AND bidx='{$_REQUEST[idx]}' AND type = '{$type}'";
 	            		$res = mysql_query($query);
@@ -392,30 +431,30 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
 					            @unlink($row["file_path"]);
 					            mysql_query("DELETE FROM gc_board_sub_file WHERE idx='".$row["idx"]."'");
 					        }
-					        
+
 					    $rowCount = mysql_num_rows($res);
-					    
+
 					    if ($rowCount > 0) {
 			                $query = "UPDATE gc_board_sub_file SET
                 						file_name = '{$file_name}',
                 						file_path = '{$file_path}'
                 					WHERE bidx = '$bidx' AND code = '{$_REQUEST[code]}' AND type = '{$type}'";
-						    
+
 					    } else {
 						    $query = "INSERT INTO gc_board_sub_file( bidx, code, type, file_name, file_path, regdate )
                 					VALUES( '{$bidx}', '{$_REQUEST[code]}', '{$type}', '{$file_name}', '{$file_path}', now() )";
-					    }	
-	                
+					    }
+
 // 						echo $rowCount.', '.$query; exit();
 
 	                mysql_query($query);
 	              }
             	}
             } else if( $boardConfig->board_skin == "o_portfolio" ) {
-            	
+
               $type  = "logo_img";
-              $bidx = $board->idx;	                  
-                          	
+              $bidx = $board->idx;
+
             	//삭제 체크 되어있을경우/.
             	if( $upfile_del > 0 ) {
 
@@ -429,10 +468,10 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
 					        mysql_query("DELETE FROM gc_board_sub_file WHERE idx='".$row["idx"]."'");
 					      }
             	}
-            	
+
               if($_FILES['upfile']['name'] != "") {
-                  $uploadName = $_FILES["upfile"][name]?utilClass::gcUpload($_FILES["upfile"][name],$_FILES["upfile"][tmp_name],$_FILES["upfile"][size], $_REQUEST[code]):"";    
-              
+                  $uploadName = $_FILES["upfile"][name]?utilClass::gcUpload($_FILES["upfile"][name],$_FILES["upfile"][tmp_name],$_FILES["upfile"][size], $_REQUEST[code]):"";
+
                   $file_name  = $_FILES["upfile"][name];
                   $file_path  = $uploadName;
               } else {
@@ -504,8 +543,8 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
                 //print_r($_FILES);
                 for($i=0; $i<count($_FILES['file']['name']); $i++) {
                     if($_FILES['file']['name'][$i] != "") {
-                        $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";    
-                    
+                        $uploadName = $_FILES["file"][name][$i]?utilClass::gcUpload($_FILES["file"][name][$i],$_FILES["file"][tmp_name][$i],$_FILES["file"][size][$i], $_REQUEST[code]):"";
+
                         $board->file_name  = $_FILES["file"][name][$i];
                         $board->file_path  = $uploadName;
                         $board->file_size  = $_FILES["file"][size][$i];
@@ -518,10 +557,13 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             echo "<script>alert('등록되었습니다.');location='list.php?code=".$_REQUEST[code]."'</script>";
         break;
         case "delete" :
+						if($_REQUEST['code'] == "k_location"){
+							mysql_query("DELETE FROM gc_branch_prd_list WHERE br_idx='".$_REQUEST[idx]."'");
+						}
             $board->code = $_REQUEST[code];
             $board->idx  = $_REQUEST[idx];
             $board->deleteBoard();
-            
+
             // 오펠라 제품소개, 납품사례 삭제일 경우 추가 삭제 진행
             if( $boardConfig->board_skin == "o_product" || $boardConfig->board_skin == "o_portfolio" ) {
             		$query = "SELECT * FROM gc_board_sub_file WHERE code='{$_REQUEST[code]}' AND bidx='{$_REQUEST[idx]}'";
@@ -534,15 +576,19 @@ if($_REQUEST[mode] && $_REQUEST[act]) {
             		$query = "DELETE FROM gc_board_sub_file WHERE code='{$_REQUEST[code]}' AND bidx='{$_REQUEST[idx]}'";
             		mysql_query($query);
             }
-            
+
             echo "<script>alert('삭제되었습니다.');location='list.php?code=".$_REQUEST[code]."'</script>";
         break;
     }
     exit;
 }
 
+
+
+
+
 /***************************************************
- HTML TOP 
+ HTML TOP
  ***************************************************/
 // INCLUDE LINK가 있을경우
 if($boardConfig->head_link != "") {
@@ -564,16 +610,16 @@ if($boardConfig->board_skin != "")  {
     if($boardConfig->category_yn == "Y") {
         $board->getBoardCategoryList();
     }
-    
+
     if($_REQUEST[mode] == "list" || $_REQUEST[mode] == "") {
         //게시판 사용 조건
-        $board->category_yn        = $boardConfig->category_yn; 
+        $board->category_yn        = $boardConfig->category_yn;
         $board->comment_yn         = $boardConfig->comment_yn;
         $board->reply_yn           = $boardConfig->reply_yn;
         $board->board_upload_count = $boardConfig->board_upload_count;
-        
+
         $board->getBoardList();
-        
+
         // 리스트
         include $_SERVER["DOCUMENT_ROOT"]."/golden_cube/skin/".$boardConfig->board_skin."/list.php";
     } else if($_REQUEST[mode] == "write") {
@@ -583,16 +629,16 @@ if($boardConfig->board_skin != "")  {
         if($_REQUEST[idx] == "") exit;
         $board->idx = $_REQUEST[idx];
         $board->getBoardInfo();
-        
+
         // 수정
         include $_SERVER["DOCUMENT_ROOT"]."/golden_cube/skin/".$boardConfig->board_skin."/write.php";
     } else if($_REQUEST[mode] == "reply") {
         $board->idx = $_REQUEST[idx];
         $board->getBoardInfo();
-        
+
         $board->title   = "[RE] ".$board->title;
         $board->content = "\n\n============================[RE]============================\n".$board->content;
-        
+
         // 답변
         include $_SERVER["DOCUMENT_ROOT"]."/golden_cube/skin/".$boardConfig->board_skin."/write.php";
     } else if($_REQUEST[mode] == "delete") {
@@ -602,10 +648,10 @@ if($boardConfig->board_skin != "")  {
     } else if($_REQUEST[mode] == "view") {
         if($_REQUEST[idx] == "") exit;
         $board->idx = $_REQUEST[idx];
-        
+
         $board->getBoardInfo();
-        
-        
+
+
         // 상세
         include $_SERVER["DOCUMENT_ROOT"]."/golden_cube/skin/".$boardConfig->board_skin."/view.php";
     } else {

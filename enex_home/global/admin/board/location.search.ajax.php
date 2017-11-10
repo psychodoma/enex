@@ -8,14 +8,16 @@ $db->openDB($gDBInfo);
 
 $search = preg_replace("/\s+/", "", $word);
 
-$sql_query01 = mysql_query(" select * from gc_board_k_prod01 where title like '%".$search."%' ");
-$sql_query02 = mysql_query(" select * from gc_board_k_prod02 where title like '%".$search."%' ");
+
+$sql_query01 = mysql_query(" select * from gc_board_k_prod01 where replace(title,' ','') like '%".$search."%' ");
+$sql_query02 = mysql_query(" select * from gc_board_k_prod02 where replace(title,' ','') like '%".$search."%' ");
+$sql_query03 = mysql_query(" select * from gc_board_i_pakage where replace(title,' ','') like '%".$search."%' ");
 
 $prod01_select = "전시제품 : <select style='height:30px;'>";
 
 $prod01_select .= "<optgroup label='현재 전시 주방제품'>";
 while ($row = mysql_fetch_array($sql_query01)) {
-	$prod01_select .= "<option>";
+	$prod01_select .= "<option value=00001".$row['idx'].">";
 	$prod01_select .= $row['title'];
 	$prod01_select .= "</option>";
 }
@@ -23,7 +25,15 @@ $prod01_select .= "</optgroup>";
 
 $prod01_select .= "<optgroup label='현재 전시 주방제품'>";
 while ($row = mysql_fetch_array($sql_query02)) {
-	$prod01_select .= "<option>";
+	$prod01_select .= "<option value=00002".$row['idx'].">";
+	$prod01_select .= $row['title'];
+	$prod01_select .= "</option>";
+}
+$prod01_select .= "</optgroup>";
+
+$prod01_select .= "<optgroup label='리빙가구'>";
+while ($row = mysql_fetch_array($sql_query03)) {
+	$prod01_select .= "<option value=00003".$row['idx'].">";
 	$prod01_select .= $row['title'];
 	$prod01_select .= "</option>";
 }
@@ -33,5 +43,23 @@ $prod01_select .= "</select>";
 
 
 echo $prod01_select;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>

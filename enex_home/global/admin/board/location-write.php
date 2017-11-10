@@ -8,8 +8,9 @@ $location_code = "false";
 function get_location_select($search=""){
 	$search = preg_replace("/\s+/", "", $search);
 
-	$sql_query01 = mysql_query(" select * from gc_board_k_prod01 where title like '%".$search."%' ");
-	$sql_query02 = mysql_query(" select * from gc_board_k_prod02 where title like '%".$search."%' ");
+	$sql_query01 = mysql_query(" select * from gc_board_k_prod01 where replace(title,' ','') like '%".$search."%' ");
+	$sql_query02 = mysql_query(" select * from gc_board_k_prod02 where replace(title,' ','') like '%".$search."%' ");
+	$sql_query03 = mysql_query(" select * from gc_board_i_pakage where replace(title,' ','') like '%".$search."%' ");
 
 	$prod01_select = "전시제품 : <select style='height:30px;'>";
 
@@ -24,6 +25,14 @@ function get_location_select($search=""){
 	$prod01_select .= "<optgroup label='현재 전시 주방제품'>";
 	while ($row = mysql_fetch_array($sql_query02)) {
 		$prod01_select .= "<option value=00002".$row['idx'].">";
+		$prod01_select .= $row['title'];
+		$prod01_select .= "</option>";
+	}
+	$prod01_select .= "</optgroup>";
+
+	$prod01_select .= "<optgroup label='리빙가구'>";
+	while ($row = mysql_fetch_array($sql_query03)) {
+		$prod01_select .= "<option value=00003".$row['idx'].">";
 		$prod01_select .= $row['title'];
 		$prod01_select .= "</option>";
 	}
@@ -376,16 +385,16 @@ function chkForm() {
 																	<?while ($row = mysql_fetch_array($sql_values)) {?>
 	                                  <tr>
 	                                    <td width="400" align="center" style='padding:5px;'>
-																				<input type='hidden' name="idx[]" value="<?=$row['idx']?>">
-																				<input type='hidden' name="prd_kitchen_table[]" value="<?=$row['prd_kitchen_table']?>">
-																				<input type='hidden' name="prd_kitchen_idx[]" value="<?=$row['prd_kitchen_idx']?>">
-																				<input class='prd_kitchen[]' style='height:30px; width:300px;' type='text' value='<?=$board->prd_kitchen[$i]?>'>
+																				<input type='hidden' name="idx1[]" value="<?=$board->idx2[$i]?>">
+																				<input class='prd_kitchen_table' type='hidden' name="prd_kitchen_table1[]" value="<?=$row['prd_kitchen_table']?>">
+																				<input class='prd_kitchen_idx' type='hidden' name="prd_kitchen_idx1[]" value="<?=$row['prd_kitchen_idx']?>">
+																				<input class='prd_kitchen' name="prd_kitchen1[]" style='height:30px; width:300px;' type='text' value='<?=$board->prd_kitchen[$i]?>'  <?if(!$board->prd_kitchen[$i]) echo "readonly";?> >
 																				<button class='select_apply' style='height:30px; border:none; background:#ccc;' onclick='return false;'>적용</button>
 																			</td>
 	                                    <td align="center">
-																				<input type='hidden' name="prd_etc_table[]" value="<?=$row['prd_etc_table']?>">
-																				<input type='hidden' name="prd_etc_idx[]" value="<?=$row['prd_etc_idx']?>">
-																				<input class='prd_etc[]' style='height:30px; width:300px;' type='text' value='<?=$board->prd_etc[$i]?>'>
+																				<input class='prd_etc_table' type='hidden' name="prd_etc_table1[]" value="<?=$row['prd_etc_table']?>">
+																				<input class='prd_etc_idx' type='hidden' name="prd_etc_idx1[]" value="<?=$row['prd_etc_idx']?>">
+																				<input class='prd_etc' name="prd_etc1[]" style='height:30px; width:300px;' type='text' value='<?=$board->prd_etc[$i]?>' <?if(!$board->prd_etc[$i]) echo "readonly";?> >
 																				<button class='select_apply2' style='height:30px; border:none; background:#ccc;' onclick='return false;'>적용</button>
 																			</td>
 																			<td align="center"><a href="javascript:delProduct(<?=$board->idx2[$i]?>)">삭제</a></td>
@@ -480,11 +489,12 @@ $(function(){
 	$('.select_apply').click(function(){
 		var vals = $('.select_area').children('select').val();
 
-
 		if(vals.substring(0,5) == 00001){ // gc_board_k_prod01 일때
 			$(this).parent().children("input.prd_kitchen_table").val("gc_board_k_prod01");
 		}else if(vals.substring(0,5) == 00002){// gc_board_k_prod02 일때
 			$(this).parent().children("input.prd_kitchen_table").val("gc_board_k_prod02");
+		}else if(vals.substring(0,5) == 00003){// gc_board_k_prod02 일때
+			$(this).parent().children("input.prd_kitchen_table").val("gc_board_i_pakage");
 		}
 		$(this).parent().children("input.prd_kitchen_idx").val(vals.substring(5));
 
@@ -504,6 +514,8 @@ $(function(){
 			$(this).parent().children("input.prd_etc_table").val("gc_board_k_prod01");
 		}else if(vals.substring(0,5) == 00002){// gc_board_k_prod02 일때
 			$(this).parent().children("input.prd_etc_table").val("gc_board_k_prod02");
+		}else if(vals.substring(0,5) == 00003){// gc_board_k_prod02 일때
+			$(this).parent().children("input.prd_etc_table").val("gc_board_i_pakage");
 		}
 		$(this).parent().children("input.prd_etc_idx").val(vals.substring(5));
 
@@ -544,6 +556,8 @@ function addProduct(){
 	var prd_etc = $("input.prd_etc").last().val();
 	var prd_etc_table = $("input.prd_etc_table").last().val();
 	var prd_etc_idx = $("input.prd_etc_idx").last().val();
+
+
 
 	$.ajax({
 		url: "location.add.ajax.php",
