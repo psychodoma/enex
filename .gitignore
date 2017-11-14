@@ -14,10 +14,16 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 
+*.png
+*.jpg
+*.gif
+
+.ftpconfig
+
 # Windows shortcuts
 *.lnk
 
-.ftpconfig
+
 
 # =========================
 # Operating System Files
