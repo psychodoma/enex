@@ -1,0 +1,787 @@
+@charset "utf-8";
+
+@import url("common_mobile.css");
+@import url("sliderkit-core.css");
+@import url("sliderkit-demos.css");
+
+*:focus { outline: none; }
+
+/* 메인 */
+
+/*
+#homeHeader {position:relative; width:100%; height:103px; margin:0 auto; }
+#homeHeader .logo {float:left; width:145px; height:auto; text-align:right; margin-top:32px;}
+#homeHeader .naviArea {float:left; width:685px; height:auto; overflow:hidden; text-align:center; margin-top:40px; color:#393939; font-size:17px; letter-spacing:-1.5px;}
+#globalHeader .globalArea { width: 100%; }
+#globalHeader > div { }
+.naviArea li {display:inline-block; padding:0 14px 0 14px; font-family: notokr-bold, '맑은 고딕', 'AppleSDGothic'; }
+#homeHeader .mSearchArea {margin-top:40px; float:left; position:relative; width:125px; height:23px; background:url(/images/global/bg_search.png) no-repeat;}
+.mSearchArea .btnSearch {position:absolute; right:6px; top:0px;}
+.mSearchArea .searchSel {position:absolute; left:4px; top:4px; z-index:999;}
+#homeHeader .goSns {position:absolute; right:50px; top:32px;}
+*/
+
+body { width: 100%; overflow-x: hidden; -webkit-overflow-scrolling: touch;  }
+/* 메인 */
+/*
+#globalHeader .globalArea { width: 100%; }
+#globalHeader .globalArea .btnMenu { width: 54px;  }
+#globalHeader .globalArea > * { display: inline-block; }
+#globalHeader .globalArea .btnUsr { right: 0; }
+#homeHeader {position:relative; width:100%; height:auto; margin:0 auto; margin-bottom: 15px;  }
+#homeHeader .logo {width:145px; height:auto; text-align:right; margin-top:32px;}
+.mSearchArea .searchSel {position:absolute; left:4px; top:4px; z-index:999;}
+#homeHeader .goSns {position:absolute; right:50px; top:32px;}
+*/
+
+/*
+	for DEBUG	
+*/
+
+/* .ofellaIntro, .ofOverview, .oProduct, .productLine, .partnerArea, .partnerArea, .joinusArea, .contactArea { display: none;} */
+
+#homeVisual {position:relative; width:100%;; height:auto; overflow:hidden; margin:0 auto;}
+#mConArea {clear:both; position:relative; width:100%; height:auto;  margin:0 auto; padding-bottom:0px; background: transparent; /*  margin: 0 3%; */}
+.ofellaIntro {position:relative; width:100%; height:300px!important; /* background:url(/images/ofella/common/m_visual01.jpg) no-repeat center center; */}
+.ofellaIntro {background: transparent; }
+.ofellaIntro .in {position:absolute; width:100%; height:100%; overflow:hidden; margin:0 auto; background: transparent; }
+/* .ofellaIntro .in h2 {margin-top:180px; text-align:center;} */
+.ofellaIntro .in h2 {position:relative;/*   margin-top:-77px; */ text-align:center; top: 100px;; }
+/* .ofellaIntro .in .scrollBtn {position:absolute; width:184px; height:37px; left:50%; margin-left:-92px; bottom:15px;} */
+.ofellaIntro .in .scrollBtn {display:none;position:absolute; width:116px; height:33px; left:50%; margin-left:-58px; bottom:15px;}
+
+.ofOverview {position:relative; width:100%;; height:auto; overflow:hidden; margin:0 auto; padding-bottom:0px; background: white;}
+.ofOverview .overviewSec {position:relative; text-align:center; margin-top:20px; margin-bottom:20px;}
+.ofOverview .overviewSec img { width: 100%; }
+.btobTitle {/* position:absolute; left:27%; */ /* width:140px; height:30px; *//*  top:130px; z-index:10000; overflow: visible; */text-align:center;margin-bottom:20px;}
+.btobTitle img {width:140px;}
+.ofOverview .tBtob {position:relative; text-align:center; margin-bottom:38px; /*
+border:1px solid #d3d3d3; 
+	border-radius:12px; 
+*/height:auto;/*  overflow:hidden; */ /* padding:10px 0 10px 0;  */text-align:center;/*  overflow: visible; *//*  margin-left: 20px; margin-right: 20px; */ }
+.tBtob li {display:inline-block; width:42%; height:auto; overflow:hidden; margin: 0 auto;}
+.tBtob li img {}
+.tBtob li.end {margin-right:0px;}
+
+/*
+.ofOverview li p.bTitleBlue {padding:17px 0 17px 0; border-bottom:1px solid #4b92c2; letter-spacing:5px; color:#4b92c2; font-size:15px; margin-bottom:20px;}
+.ofOverview li p.bTitleGray {padding:17px 0 17px 0; border-bottom:1px solid #b8b8b8; letter-spacing:5px; color:#434343; font-size:15px; margin-bottom:20px;}
+.ofOverview li p.bTitleGrayGreen {padding:17px 0 17px 0; border-bottom:1px solid #77c294; letter-spacing:5px; color:#434343; font-size:15px; margin-bottom:20px;}
+.ofOverview li p.bTitleGrayOrange {padding:17px 0 17px 0; border-bottom:1px solid #efa141; letter-spacing:5px; color:#434343; font-size:15px; margin-bottom:20px;}
+.ofOverview li p.summery {padding-bottom:25px; line-height:18px;}
+.ofOverview li p.subTitle {padding:0;}
+*/
+
+.oProduct {position:relative; width:100%; height:160px; /* background:#000 url(/images/ofella/common/m_visual02.jpg) no-repeat center center; */}
+.oProduct {background: transparent; }
+.oProduct .in {position:absolute; width:100%; height:100%; overflow:hidden; margin:0 auto; text-align:center; background: transparent; }
+.oProduct .in h2 {position:relative;  margin-top:-43px; text-align:center; top: 50%; }
+.oProduct .in h2 img {width:190px;}
+
+/*
+.oProduct .in div {position:relative; text-align:center; width: 100%; }
+.oProduct .in div img {  margin-top:-43px; top: 50%; }
+*/
+
+.itemOverlay { width: 100%; height: 100%; background: transparent; background-size: cover; text-align: center; }
+.itemOverlay .comBtMore { opacity: 0; cursor: pointer; }
+
+.itemOverlay260 { width: 100%; height: 200px; background: transparent; background-size: cover; text-align: center; }
+.itemOverlay260 .comBtMore { opacity: 0; cursor: pointer; }
+
+.itemOverlay303-mobile { width: 100%; height: 100%; background: transparent; background-size: cover; text-align: center; }
+.itemOverlay303-mobile * { height: 100%; width: 100%; }
+.itemOverlay303 .comBtMore { opacity: 0; cursor: pointer; }
+
+
+#ofOverview-1 { background: url("/images/ofella/common/btob_company_off.png") no-repeat center center; height: 203px; background-size: contain; }
+#ofOverview-2 { background: url("/images/ofella/common/btob_university_off.png") no-repeat center center; height: 203px; background-size: contain; }
+#ofOverview-3 { background: url("/images/ofella/common/btob_institute_off.png") no-repeat center center; height: 203px; background-size: contain; }
+#ofOverview-4 { background: url("/images/ofella/common/btob_soho_off.png") no-repeat center center; height: 203px; background-size: contain; }
+
+
+.productLine {position:relative; width:100%;; height:auto; overflow:hidden; margin:0 auto; background: white; }
+.productLine h2 {display:block; padding:62px 0 90px 0; font-size:19px; font-family: notokr-regular, 'Nanum Barun Gothic'; text-align:center;}
+
+.productLine .proSet {position:relative; clear:both; width:100%;; height:auto; overflow:hidden; margin-bottom:50px; margin-top:50px;}
+.proSet01 {position:absolute; left:0; top:0; width:230px; height:400px;}
+.proSet01 .imgSec01 {position:relative; width:228px; height:328px; border-bottom:1px solid #e5e5e5; overflow:hidden; margin-bottom:10px; background: url("/images/ofella/common/mt_2015_off.png") no-repeat; }
+.proSet01 .arLeftSec {position:relative; float:left; width:110px; height:60px; margin-right:10px;}
+.proSet01 .arRightSec {position:relative; float:left; width:110px; height:60px;}
+
+.proSet02 { width:99%; height:208px; border-bottom:1px solid #e5e5e5; overflow:hidden; margin-bottom: 10px;}
+.proSet02 .imgSec02 {position:relative; width:100%; height:100%;}
+.proSet02 .pagerSec {display:block;}
+
+.sliderkit.photoslider-1click { height: 100%;  width: 100%; }
+.proSet02 .photoslider-1click .sliderkit-nav {  width: 100%; }
+.proSet02 .photoslider-1click .sliderkit-nav-clip ul li { background-image: url('/images/ofella/common/cycle_ofella_off.gif');}
+.proSet02 .photoslider-1click .sliderkit-nav-clip ul li.sliderkit-selected { background-image: url('/images/ofella/common/cycle_ofella_on.gif');}
+
+.proSet02 .photoslider-1click .sliderkit-nav-clip ul li a { background-image: url('/images/ofella/common/cycle_ofella_off.gif');}
+.proSet02 .photoslider-1click .sliderkit-nav-clip ul li.sliderkit-selected a { background-image: url('/images/ofella/common/cycle_ofella_on.gif');}
+
+.proSet02 .photoslider-1click .sliderkit-panel { width: 100%; }
+.proSet02 .photoslider-1click .sliderkit-panel img { width: 100%; }
+/* .sliderkit-panel-old { display: none !important; } */
+
+.proSet03 {width:99%; height:auto; border-bottom:1px solid #e5e5e5; overflow:hidden; background: url("/images/ofella/common/mpro01_off.png") no-repeat; background-size: contain; background-position: center center; /* margin-bottom: 10px; */}
+.proSet04 {width:99%; height:auto; border-bottom:1px solid #e5e5e5; overflow:hidden; background: url("/images/ofella/common/mpro02_off.png") no-repeat; background-size: contain; background-position: center center; /* margin-bottom: 10px; */}
+.proSet05 {width:99%; height:auto; border-bottom:1px solid #e5e5e5; overflow:hidden; background: url("/images/ofella/common/mpro03_off.png") no-repeat; background-size: contain; background-position: center center; /* margin-bottom: 10px; */}
+.proSet06 { width:99%; height:auto; border-bottom:1px solid #e5e5e5; overflow:hidden; background: url("/images/ofella/common/mpro04_off.png") no-repeat; background-size: contain; background-position: center center; /* margin-bottom: 10px; */}
+.proSet07 { display:none; width:99%; height:auto; border-bottom:1px solid #e5e5e5; overflow:hidden; background: url("/images/ofella/common/pro_more_off.png") no-repeat; background-size: contain; background-position: center center;}
+
+.partnerArea {position:relative; width:100%; height:160px; /* background:url(/images/ofella/common/m_visual03.jpg) no-repeat center center; */}
+.partnerArea { background: transparent; }
+.partnerArea .in {position:absolute; width:100%; height:100%; overflow:hidden; margin:0 auto; text-align:center;}
+.partnerArea .in h2 {position:relative;  margin-top:-42px; text-align:center; top: 50%; }
+.partnerArea .in h2 img {width:180px;}
+
+.joinusArea {position:relative; width:100%;; height:auto; overflow:hidden; margin:0 auto; padding-bottom:50px; padding-top:10px; }
+.joinusArea h2 {display:block; padding:59px 0 59px 0; font-size:19px; font-family: notokr-regular, 'Nanum Barun Gothic'; text-align:center;}
+.joinSec {float:left; position:relative; width:100%; height:auto;  overflow:hidden;}
+.joinSec .joinPart { width:146px; height:172px; text-align:center; margin: 0 auto;}
+.joinSec .joinCom { position:relative; width:100%; height:172px;}
+.joinCom .comList {position:relative; margin-left:0;}
+.joinCom .comList ul { margin: 0 auto; width: auto; }
+.joinCom .comList li {float:left; width:49%; height:180px; margin:0 auto; text-align:center; margin-right: 2px; }
+.joinCom .comList li.end {margin-right:0px;}
+
+.comListItemOverlay { width: 100%; height: 100%; background: transparent; }
+.comListItemOverlay .comTitle { margin-top: 40px; }
+.comListItemOverlay .comBtMore { opacity: 0; cursor: pointer; }
+
+#comListItem1 { background: url("/images/ofella/common/refer_1.png") no-repeat; }
+#comListItem2 { background: url("/images/ofella/common/refer_2.png") no-repeat; }
+#comListItem3 { background: url("/images/ofella/common/refer_3.png") no-repeat; }
+#comListItem4 { background: url("/images/ofella/common/refer_4.png") no-repeat; }
+#comListItem5 { background: url("/images/ofella/common/refer_5.png") no-repeat; }
+#comListItem6 { background: url("/images/ofella/common/refer_6.png") no-repeat; }
+
+.lineBlue {clear:both; position:relative; padding-top:20px; border-bottom:1px solid #cfe2ef; margin-bottom:20px; width:875px; margin-left:0px;}
+.lineGray {clear:both; position:relative; padding-top:10px; border-bottom:1px solid #dfdfdf; margin-bottom:10px; width:875px; margin-left:0px;}
+
+.conBox {position:relative; width:100%; height:auto; overflow:hidden; margin:0 auto;}
+.mConLeft { width:100%; height:auto; overflow:hidden; margin-bottom: 10px;}
+.mConRight { width:100%; height:auto; overflow:hidden;}
+
+.containGray {clear:both; width:100%; height:auto; overflow:hidden; background:#f9f9f9; padding:28px 0 28px 0;}
+.containGray p.storeTitle {text-align:center; color:#000; font-size:24px; letter-spacing:-1px; font-family: notokr-bold, 'Nanum Barun Gothic';}
+.containGray p.subCopy {text-align:center; margin-top:10px; margin-bottom:50px; font-size:16px;}
+
+.findStore {position:relative; margin:0; padding:0; border:1px solid #c2c2c2; overflow:hidden; height:441px;background-color: #fff;}
+.findStore .picStore {display:block; }
+.findStore .picStore img {width:100%;}
+.bbsArea {position:relative; padding:28px 18px 32px 18px; overflow:hidden; background:#FFF;  }
+.bbsArea h2 {display:block; position:relative; font-size:18px; letter-spacing:-1px; margin-bottom:12px; color:#181818;}
+.bbsArea .moreBtn {position:absolute; right:0; top:0; color:#e82f34; background:url(/images/ofella/common/ar_dgray.png) no-repeat right; font-size:12px; padding-right:15px;}
+.moreBtn a {color:#393939; text-decoration:underline;}
+.bbsArea li {display:block; font-size:13px; position:relative; line-height:26px; color:#181818; height: 54px;}
+.bbsArea li a {color:#181818;}
+.bbsArea li a:hover {color:#000; text-decoration:none;}
+.bbsDate {display:none;position:absolute; right:0; top:26px; font-size:12px; text-align:right; }
+
+.serviceArea {position:relative; padding:0; margin:0;}
+.serviceArea li {display:block; border-bottom:1px solid #c2c2c2;/*  margin-bottom:9px;  */padding:10px; overflow:hidden; background:#FFF;}
+.svrTitle {float:left; width:180px;}
+.svrTitle h2 {display:block; margin-bottom:8px; font-size:18px; color:#181818; padding:0;}
+.svrTitle p {padding:0; margin:0; font-size:13px; color:#181818; letter-spacing:-1px; line-height:20px; display:block;}
+.goLink {text-decoration:underline !important; font-family: notokr-bold, 'Nanum Barun Gothic'; margin-top:10px; font-size:13px;}
+.goLink a {color:#393939;}
+.funcArea {float:right; margin-top:8px;/*  margin-right:8px;  */width:110px;}
+.funcArea .callNumber {display:block; text-align:center; font-size:16px; letter-spacing:-1px; font-family: notokr-bold, 'Nanum Barun Gothic'; color:#000; padding-top:26px;padding-right: 10px;}
+.selfQuo a {display:block; width:102px; padding:8px 0 8px 12px; background:#6f777f; border:1px solid #6f777f; color:#FFF; font-family: notokr-bold, 'Nanum Barun Gothic'; margin-bottom:5px; letter-spacing:-0.5px;}
+.proposal a {display:block; width:102px; padding:8px 0 8px 12px; background:#f2f2f2; border:1px solid #6f777f; color:#484848; font-family: notokr-bold, 'Nanum Barun Gothic'; margin-bottom:5px; letter-spacing:-0.5px;}
+
+.contactArea {clear:both; position:relative; width:100%; height:160px; background:url(/images/ofella/common/m_visual04.jpg) no-repeat center center;}
+.contactArea { background: transparent; }
+.contactArea .in {position:relative; width:100%; height:auto; margin:0 auto; background: transparent;}
+.contactArea .in .contactMet { position: absolute; padding-top:20px; width:100%; margin:0 auto; overflow:hidden; height:auto;  }
+.contactArea .in .contactMet ul { height: auto;  text-align: center; }
+.contactMet li {display: inline-block; width:20%; height:auto; overflow:hidden; text-align:center; margin-right: 5px; }
+.contactMet li img {width:101px;}
+.contactMet li.end {margin-right:0px;}
+.contactMet li p {text-align:center; color:#FFF; margin-top:10px; font-size:14px;}
+
+
+
+/*dotPager*/
+.cyPager {clear:both; width:100%; text-align:center; padding:0; margin:0;}
+.cyPager li {display:inline-block; width:15px; height:15px; margin:0; text-align:center; line-height:100%; background:none;}
+
+/* navigation */
+#subnaviArea {clear:both; position:relative; width:100%;  height:auto; margin:0 auto; /* border-top:1px solid #393939; */ border-bottom:1px solid #edeeee; }
+#subnaviArea .naviMenu {position:relative; margin-top:-1px; width: 100%; height: 60px; overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.naviMenu ul {/* margin-left:45px; */ width: 100%; /*width:3000%*/}
+.naviMenu li {float:left; width:14%; height:60px; line-height:60px; text-align:center; font-size:11px; color:#969696; letter-spacing:-1px;}
+/* .naviMenu li {float:left; width:127px; height:60px; line-height:60px; text-align:center; font-size:18px; color:#969696; letter-spacing:-1px;} */
+.naviMenu li a {display:block; color:#969696; }
+.naviMenu li a:hover {border-top:2px solid #e93033; color:#393939; line-height:56px;}
+.naviMenu li.on a {border-top:2px solid #e93033; color:#393939; line-height:56px;}
+
+#subnaviArea .naviMenu::-webkit-scrollbar {width: 0; height: 0; border: none; display: none; }
+
+.subMenuSet {clear:both; /* display:block; */display:none; position:relative; border-top:1px solid #edeeee; height:66px; line-height:66px;}
+.subMenuSet .subMenu {position:relative; margin-left:20px;}
+.subMenu li {float:left; padding:0 15px; color:#969696; font-size:14px;}
+.subMenu li a {color:#969696;}
+.subMenu li a:hover {color:#393939;}
+.subMenu li.on a {color:#393939;}
+
+.location {position:absolute; right:20px; top:0px; text-align:right; font-size:12px; color:#a6a6a6; letter-spacing:0px;}
+.location_b {clear:both; position:relative; height:60px; width:980px; margin:0 auto; text-align:right; font-size:12px; color:#a6a6a6; letter-spacing:0px; line-height:60px; padding-right:20px; border-top:1px solid #393939; border-bottom:0px solid #e6e7e7;}
+.location_s {clear:both; position:relative; height:60px; width:980px; margin:0 auto; text-align:right; font-size:12px; color:#a6a6a6; letter-spacing:0px; line-height:60px; padding-right:20px; border-top:1px solid #e6e7e7; border-bottom:0px solid #e6e7e7;}
+.eventTitle {position:absolute; width:700px; left:40px; font-size:18px; color:#393939; letter-spacing:-1px; text-align:left;}
+
+#subCon {clear:both; position:relative; width:100%;; height:auto; overflow:hidden; margin:0 auto; margin-top:0px; margin-bottom:50px;}
+
+/* tabMenu */
+.tabMenu {clear:both; position:relative; height:auto;  margin-bottom:10px; margin-top:10px; overflow-x: scroll; -webkit-overflow-scrolling: touch; width: 100%;}
+.tabMenu ul { width: 3000%;  }
+.tabMenu li {float:left; width:120px; height:40px; text-align:center; font-size:14px; letter-spacing:-1px; line-height:39px; margin-top:0px; }
+.tabMenu li a {display:block; border-bottom:1px solid #c3c3c3;}
+.tabMenu li a:hover {border-left:1px solid #c3c3c3; border-top:1px solid #c3c3c3; border-right:1px solid #c3c3c3; border-bottom:1px solid #FFF; margin-top:0px;}
+.tabMenu li.on a {border-left:1px solid #c3c3c3; border-top:1px solid #c3c3c3; border-right:1px solid #c3c3c3; border-bottom:1px solid #FFF; margin-top:0px;}
+
+
+.conBox {clear:both; position:relative; overflow:hidden; margin-top:0px !important; margin-bottom:15px;}
+.conBox p:nth-child(1) > img {margin-top:10px;}
+
+.goTop {clear:both; position:relative; border-top:1px solid #c3c3c3;  }
+.goTop .btnTop {float:right; margin-top:30px; margin-bottom: 30px; border:1px solid #e3e3e3; width:118px; height:56px; background:url(/images/global/ar_top.gif) no-repeat center 15px; text-align:center; font-size:13px; color:#92989c; line-height:65px;}
+.btnTop a {display:block; color:#92989c;}
+
+/* subMenuCate*/
+.subCateSet {clear:both; display:block; position:relative; width:100%;; margin:0 auto; border-top:0px solid #e6e7e7; border-bottom:1px solid #e6e7e7; height:49px; line-height:49px; margin-bottom:20px;}
+.subCateSet .subCate {position:relative; margin-left:0px;}
+.subCate li {float:left; width:125px; margin-right:0px; color:#969696; font-size:14px; text-align:center;}
+.subCate li a {color:#969696; display:block;}
+.subCate li a:hover {color:#393939; border-bottom:2px solid #e93034;}
+.subCate li.on a {color:#393939; border-bottom:2px solid #e93034;}
+
+.conBox {clear:both; position:relative; overflow:hidden; margin-top:0px; margin-bottom:15px;}
+.conBlock {clear:both; position:relative; margin-bottom:4px; margin-top:10px;overflow:hidden;}
+.conBlock_half {float:left; width:498px; margin-right:4px;}
+.conBlock_half_right {float:left; width:498px; margin-right:0px;}
+
+/* 매장안내 */
+/* 매장안내 */
+.storeTitle {display:block; height:auto; overflow:hidden; margin-left: 10px;}
+.storeTitle h2 {height:46px; background:url(http://image.enex.co.kr/images/kitchen/common/icon_location.gif) no-repeat left 0px; background-size: 30px; padding-left:40px; font-size:16px; letter-spacing:-1px; color:#393939;}
+.storeTitle h2 p {font-size:11px; font-family: notokr-regular, 'Nanum Barun Gothic'; margin-top:7px;}
+
+.storeSearch {clear:both; position:relative;}
+.storeSearch .searchBox {display:inline-block; width:98px; height:30px; border:1px solid #d6d6d6; position:relative;}
+.searchBox .innerSearch {position:absolute; width:90px; height:26px; left:4px; top:2px; overflow:hidden;}
+.innerSearch select {width:92px; height:28px; font-size:13px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic'; margin-top:-1px; margin-left:-1px; background: transparent;}
+.storeinputBox {position:absolute; right:0px; top:10px;  display:none;}
+.btnStoreSearch {display:inline-block; border:1px solid #393939; height:30px; color:#393939; font-size:13px; font-family: notokr-bold, 'Nanum Barun Gothic'; line-height:28px;}
+.btnStoreSearch a {display:block; padding:0 10px;}
+
+.mapArea {clear:both; position:relative; width:100%; height:354px; margin:30px 0 30px 0; background:#ccc;}
+
+.storeTab {clear:both; position:relative; border-bottom:1px solid #393939; height:46px;}
+.storeTab li {float:left; width:116px; height:31px; line-height:31px; border-left:1px solid #FFF; border-top:1px solid #FFF; border-right:1px solid #FFF; border-bottom:1px solid #393939; text-align:center; font-size:14px; color:#969696; margin-left:-3px;}
+.storeTab li a {display:block;}
+.storeTab li:first-child {margin-left:-1px;}
+.storeTab li a:hover {border-left:1px solid #393939; line-height:30px; border-top:1px solid #393939; border-right:1px solid #393939; border-bottom:1px solid #FFF; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic';}
+.storeTab li.on a {border-left:1px solid #393939; line-height:30px; border-top:1px solid #393939; border-right:1px solid #393939; border-bottom:1px solid #FFF; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic';}
+
+.storeTable {clear:both; position:relative;}
+.storeTable table {width:100%; padding:0; margin:0;}
+.storeTable th {height:40px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic'; font-size:9px; border-bottom:2px solid #e9e9e9; line-height:20px;}
+.storeTable td {height:40px; color:#393939; font-family: notokr-regular, 'Nanum Barun Gothic'; font-size:9px; border-bottom:1px solid #e9e9e9; line-height:20px; text-align:center;}
+.storeTable td:first-child {text-align: left;}
+.storeTable td p:first-child {font-weight:bold !important; font-size: 10px;}
+
+/*bbs*/
+.bbsBox {clear:both; position:relative; height:auto; overflow:hidden;}
+.bbsBox h2 {display:block; font-size:16px; letter-spacing:-1px; color:#393939; /* margin-left:37px;  */margin-bottom:22px;}
+.bbsBox p {font-size:12px; letter-spacing:-1px; color:#393939; /* margin-left:37px; margin-bottom:50px; margin-top:50px; */}
+.bbsBox .headerSec {position:relative; height:40px; /* background:#f9dba4; */ /* margin-bottom:20px; */ overflow:hidden;}
+
+.articleBox {clear:both; position:relative; width:100%;}
+.articleBox table {clear:both; padding:0; margin-bottom:48px; width:100%;}
+.articleBox th {border-top:1px solid #393939; border-bottom:1px solid #e6e7e7; color:#393939; font-size:13px; padding:18px;}
+.articleBox td {border-bottom:1px solid #e6e7e7; color:#393939; font-size:13px; padding:9px; text-align:center; }
+.articleBox td p {margin:20px 30px 0px 30px;}
+.articleBox td > span {margin:20px 30px 0px 30px;}
+.articleBox td > div {margin:20px 30px 0px 30px;}
+.articleBox td.tdLeft {text-align:left;}
+.bbsRep {font-size:12px; color:#cacaca;}
+
+.articleBoxList {clear:both; position:relative; width:100%;}
+.articleBoxList table {clear:both; padding:0; margin-bottom:48px;}
+.articleBoxList th {border-top:1px solid #393939; border-bottom:1px solid #e6e7e7; color:#393939; font-size:14px; padding:18px;}
+.articleBoxList td {border-bottom:1px solid #e6e7e7; color:#393939; font-size:13px; padding:23px; text-align:center;}
+.articleBoxList td.tdLeft {text-align:left;}
+
+.articleBox table.viewTable {clear:both; padding:0; margin-bottom:0px; width:100%;}
+.articleBox table.viewTable th {border-top:1px solid #393939; border-bottom:1px solid #e6e7e7; color:#393939; font-size:13px; padding:10px;}
+.articleBox table.viewTable th.bbsCon {border-bottom:1px solid #393939;}
+.articleBox table.viewTable th div {float:left;/*  padding-left:10px; */ text-align:left; font-family: notokr-regular, 'Nanum Barun Gothic';}
+.articleBox table.viewTable th div p.subject {font-size:14px; letter-spacing:-1px; padding:5px 0; min-height:20px; color:#393939; margin-left:0; margin-bottom:0; margin-top:0;}
+.articleBox table.viewTable th div p.nickName {font-size:14px; color:#393939; letter-spacing:-1px; min-height:18px; margin-left:0;}
+.articleBox table.viewTable td {border-bottom:1px solid #e6e7e7; color:#393939; font-size:13px; /* padding:23px;  */text-align:center;}
+.articleBox table.viewTable td.bbsCon {border-bottom:1px solid #393939; color:#393939; font-size:13px;/*  padding:10px 40px; */ text-align:center; min-height:150px;}
+.articleBox table.viewTable td.bbsCon p {margin-top:0 !important; margin-bottom:0 !important; font-size:14px; margin-left:0 !important; line-height:20px;}
+.articleBox table.viewTable td.bbsEditor {border-bottom:1px solid #393939; color:#393939; font-size:13px; padding:10px 6px; text-align:left; min-height:150px;}
+.articleBox table.viewTable td.tdLeft {text-align:left;}
+
+.articleBox .mypageBox {text-align: left;}
+
+.sortBbs {position:relative; height:auto; overflow:hidden;}
+.sortBbs li {float:left; width:115px; height:60px; text-align:center; line-height:60px; font-size:13px;}
+.sortBbs li a {color:#393939;}
+.sortBbs li a:hover {color:#e92f34;}
+.sortBbs li.on a {color:#e92f34;}
+
+.sortCate {position:relative; border-bottom:1px solid #747474; height:auto; overflow:hidden;}
+.sortCate li {float:left; width:140px; height:60px; text-align:center; line-height:60px; font-size:13px;}
+.sortCate li a {color:#393939; display:block;}
+.sortCate li a:hover {color:#e92f34; background:url(/images/home/bbs/bg_on01.gif) no-repeat center bottom;}
+.sortCate li.on a {color:#e92f34; background:url(/images/home/bbs/bg_on01.gif) no-repeat center bottom;}
+
+.sortRight {position:absolute; right:30px; bottom:20px;}
+.sortRight .selectBox {width:70px; height:20px; overflow:hidden;}
+.sortRight select {width:72px; height:22px; margin-top:-1px; margin-left:-1px; letter-spacing:-1px;}
+
+.bbsFunc {clear:both; position:relative; overflow:hidden;/*  text-align:center; */}
+
+.paging {clear:both; position:relative; width:365px; height:auto; overflow:hidden; margin:0 auto; margin-bottom:10px; text-align:center; padding-top:2px;}
+.paging li {display:inline-block; margin-left:2px; margin-right:2px; width:30px; height:30px; line-height:30px; color:#b9b9b9; font-size:14px; text-align:center; margin-bottom:5px;}
+.paging li img {vertical-align:0px;}
+.paging li a {display:block; color:#b9b9b9;}
+.paging li a:hover {color:#e92f35;}
+.paging li.on a {color:#e92f35;}
+.arBox {border:1px solid #e4e4e4; text-align:center; padding:5px 7px 5px 7px;}
+.bbsSearch {clear:both; position:relative; width:365px; height:auto; margin:0 auto;}
+.bbsSearch select {width:69px; border:1px solid #e4e4e4; padding:5px;}
+.bbsSearchBtn {text-align:center; border:1px solid #e4e4e4; padding:7px 22px 7px 22px; vertical-align:0px;}
+.bbsSearchBtn a {display:block;}
+
+/*media*/
+.mediaSec {clear:both; position:relative; height:auto; overflow:hidden; margin-bottom:48px;}
+.mediaSec ul {clear:both;}
+.mediaSec li {display:block; height:auto; overflow:hidden; margin-bottom:10px; padding-bottom:10px; border-bottom:1px solid #bebebe;}
+.mediaSec li.gds {display:block; height:auto; overflow:hidden; margin-top:20px; margin-bottom:20px; padding-bottom:10px; border-bottom:1px solid #bebebe;}
+.mediaArticle {position:relative;}
+.mediaArticle .txtSec {float:left; position:relative; width:100%; margin-right:10px;}
+.txtSec .photoSec {position:relative; width:50px; height:auto; margin-bottom:10px; margin-top: 20px; margin-left: 5px;}
+.txtSec p {/* margin-top:10px;  */margin-left:0; margin-bottom:0; /* min-height:15px;  */background:none;}
+.txtSec p.headerTitle, .txtSec p.mTitle, .txtSec p.conTitle { display: none; }
+.txtSec h2.title {float:left;padding:0px 0 2px 10px; height:20px; color:#393939; font-size:16px; font-family: notokr-bold, 'Nanum Barun Gothic'; margin: 0; }
+.txtSec p.subtitle {float:left;padding:0px 0 2px 10px; height:20px; line-height: 20px; color:#393939; font-size:13px;margin: 0; }
+.txtSec p.cat {float:left;padding:0px 0 2px 10px; color:#a6a6a6; font-size:11px; height:20px; line-height: 20px;margin:0;}
+.txtSec br { display: none; }
+.mediaArticle .imgSec {float:left; position:relative; width:100%; min-height:150px; height:auto; overflow:hidden; background:#f9dba4;}
+
+/*gallery*/
+.gallerySec {clear:both; position:relative; height:auto; overflow:hidden; margin-bottom:28px; margin-top:24px;}
+.gallerySec li {float:left; width:321px; height:auto; overflow:hidden; margin-right:18.5px;}
+.gallerySec li.end {margin-right:0px;}
+.gallBox {display:block; width:321px; height:auto; margin-bottom:20px;}
+.gallBox .imgSec {display:block; width:321px; height:182px; text-align:center;}
+.gallBox p {margin-left:0; margin-top:0; margin-bottom:10px; min-height:15px;}
+.gallBox p.gdsTitle {padding:17px 0 5px 12px; color:#393939; font-size:14px;}
+.gallBox p.gdsExp {padding:0px 0 0px 12px; color:#a6a6a6; font-size:12px;}
+
+/*Enex In*/
+.eninSec {clear:both; position:relative; height:auto; overflow:hidden; margin-bottom:28px; margin-top:0px;}
+.eninSec li {float:left; width:498px; height:auto; overflow:hidden; margin-right:4px;}
+.eninSec li.end {margin-right:0px;}
+.eninBox {display:block; width:321px; height:auto; margin-bottom:20px;}
+.eninBox .imgSec {display:block; width:498px; height:214px; text-align:center;}
+.eninBox p {margin-left:0; margin-bottom:0; margin-top:15px;}
+.eninBox p.gdsExp {padding:0px 0 0px 12px; color:#a6a6a6; font-size:12px;}
+
+/* goods Detail */
+.gdsVisual {position:relative; height:542px; text-align:center;}
+.gdsLeft {position:absolute; left:0; top:230px;}
+.gdsRight {position:absolute; right:0; top:230px;}
+
+.gdsExplain {clear:both; position:relative; height:auto; overflow:hidden; margin-top:35px; margin-bottom:40px;}
+.gdsExplain .gdsLeftCon {float:left; width:440px; padding:0 20px 0 20px;}
+.gdsExplain .gdsRightCon {float:left; 520px; position:relative;}
+.gdsLeftCon h2 {display:block; color:#393939; font-size:30px; margin-bottom:20px; letter-spacing:-1px;}
+.gdsLeftCon p {color:#393939; font-size:18px; letter-spacing:-1px; line-height:24px; margin-bottom:25px;}
+.gdsBtnRelative {display:block;}
+.btnAr {font-size:15px; color:#393939; background:url(/images/kitchen/gds/ar_down.gif) no-repeat right; padding-right:20px; margin-right:20px; font-family: notokr-regular, 'Nanum Barun Gothic';}
+
+.gdsRightCon dl {width:520px; margin-top:50px;}
+.gdsRightCon dt, dd {float:left;}
+.gdsRightCon dt {width:75px; padding-left:35px; font-family: notokr-regular, 'Nanum Barun Gothic'; font-size:15px; color:#393939; height:50px;}
+.gdsRightCon dd {width:410px; font-size:15px; height:50px;}
+
+.colorBox {border:1px solid #e1e1e1; width:22px; height:22px; display:inline-block; vertical-align:-7px; margin-right:10px; margin-left:5px;}
+.white {background:#FFF;}
+.brown {background:#8c6a43;}
+
+.gdsinfo {clear:both; position:relative; border-top:1px solid #d2d2d2;}
+.gdsinfo h2 {display:block; margin-left:27px; font-size:20px; letter-spacing:-1px; margin-top:27px; margin-bottom:27px; color:#393939;}
+
+.shortPort {float:left; width:471px; margin-right:23px; border-top:1px solid #757575;}
+.shortPort h2, .shortReview h2 {display:block; margin-left:27px; font-size:20px; letter-spacing:-1px; margin-top:27px; margin-bottom:27px; color:#393939;}
+
+.shortPort p.thumbTitle {display:block; text-align:left !important; padding:15px 0 5px 0; font-family: notokr-bold, 'Nanum Barun Gothic'; font-size:15px; letter-spacing:-1px; color:#000;}
+.shortPort p.summery {display:block; text-align:left !important; padding:0; font-family: notokr-regular, 'Nanum Barun Gothic'; font-size:13px; letter-spacing:-1px; color:#636363; line-height:18px;}
+
+.shortReview {float:left; width:506px; margin-right:0px; border-top:1px solid #757575;}
+.shortReview li {float:left; width:240px; margin-right:20px;}
+.shortReview li p.thumbTitle {display:block; text-align:left !important; padding:15px 0 5px 0; font-family: notokr-bold, 'Nanum Barun Gothic'; font-size:15px; letter-spacing:-1px; color:#000;}
+.shortReview li p.summery {display:block; text-align:left !important; padding:0; font-family: notokr-regular, 'Nanum Barun Gothic'; font-size:13px; letter-spacing:-1px; color:#636363; line-height:18px;}
+.shortReview li.end {margin-right:0px;}
+
+.gdsRelative {clear:both; position:relative; border-top:1px solid #757575; height:auto; overflow:hidden;}
+.gdsRelative h2 {display:block; margin-left:27px; font-size:20px; letter-spacing:-1px; margin-top:27px; margin-bottom:27px; color:#393939;}
+.gdsRelative li {float:left; width:217px; height:auto; overflow:hidden; margin-right:42px;}
+.gdsRelative li.end {margin-right:0px;}
+.gdsRelative li p.thumbTitle {display:block; text-align:left !important; padding:15px 0 5px 0; font-family: notokr-bold, 'Nanum Barun Gothic'; font-size:15px; letter-spacing:-1px; color:#000;}
+
+/* portfolio */
+.portBest {clear:both; position:relative; height:auto; overflow:hidden;}
+.portBest li {float:left; width:456px; height:auto; overflow:hidden; margin-right:88px; margin-top:50px;}
+.portBest li.end {margin-right:0px;}
+.portBox {width:456px; height:410px; overflow:hidden;}
+.portBox .portImg {display:block; width:456px; height:320px; overflow:hidden; text-align:center;}
+.portBox p {margin-left:0; min-height:15px;}
+.portBox p.thumbTitle {display:block; text-align:left !important; padding:15px 0 5px 10px; font-family: notokr-bold, 'Nanum Barun Gothic'; font-size:15px; letter-spacing:-1px; color:#000;}
+.portBox p.summery {display:block; text-align:left !important; padding-left:10px; font-family: notokr-regular, 'Nanum Barun Gothic'; font-size:13px; letter-spacing:-1px; color:#636363; line-height:18px;}
+
+.portTitle {clear:both; position:relative;display:none; }
+.portTitle h2 {display:block; margin-left:10px; margin-top:80px; font-family: notokr-bold, 'Nanum Barun Gothic'; height:45px; line-height:45px; font-size:30px;}
+.portTitle p {margin-left:10px; font-size:14px; margin-top:0; color:#868686;}
+.portTab {clear:both; position:relative; border-bottom:1px solid #747474; height:38px; overflow-x: scroll; overflow-y:hidden;-webkit-overflow-scrolling: touch;}
+.portTab::-webkit-scrollbar {width: 0; height: 0; border: none; display: none; }
+.portTab ul {  width: 3000%; }
+.portTab li {float:left; width:90px; height:40px; font-size:14px; text-align:center;}
+.portTab li a {display:block; color:#969696;}
+.portTab li a:hover {display:block; color:#393939; border-bottom:4px solid #e92f34; height:37px;}
+.portTab li.on a {display:block; color:#393939; border-bottom:4px solid #e92f34; height:37px;}
+
+/* cateTab */
+.cateTab {clear:both; position:relative; height:auto;  margin-bottom:10px; margin-top:10px; overflow-x: scroll; overflow-y: hidden;-webkit-overflow-scrolling: touch; width: 100%;}
+.cateTab ul { width: 100%; display: inline-block;}
+.cateTab li {float:left; width:20%; height:40px; text-align:center; font-size:12px; letter-spacing:-1px; line-height:39px; margin-top:0px; margin-bottom: -1px;}
+.cateTab li a {display:block; border-bottom:1px solid #c3c3c3; background-color: #fff;}
+.cateTab li a:hover {border-left:1px solid #c3c3c3; border-top:1px solid #c3c3c3; border-right:1px solid #c3c3c3; border-bottom:1px solid #FFF; margin-top:0px;}
+.cateTab li.on a {border-left:1px solid #c3c3c3; border-top:1px solid #c3c3c3; border-right:1px solid #c3c3c3; border-bottom:1px solid #FFF; margin-top:0px;}
+
+
+.referArea {clear:both; width:100%; height:auto; overflow:hidden; margin:0 auto; padding-top:20px;}
+.referArea .referBig {position:relative; width:100%; margin:0 auto;}
+.referBig .bigPic {margin-bottom:20px; width:100%; height:auto; overflow:hidden; text-align: center; }
+.referBig .bigPic img { width: 100%!important; /* height: auto;  */}
+.referBig .thumbTxt {font-size:12px; line-height:20px; min-height:20px; margin-bottom:5px;}
+.thumbArea {clear:both; width:100%; height:auto; overflow:hidden; margin:0 auto; border-top:1px solid #e5e5e5;}
+.thumbArea .thumbBox {position:relative; width:90%; margin:0 auto; padding:14px 0;}
+.thumbBox .referLeft {position:absolute; left:0; top:35px;}
+.thumbBox .referRight {position:absolute; right:0; top:35px;}
+.thumbBox .referThumb {height:68px; margin:0 auto; text-align:center; width: 100%;}
+.refurThumb ul { }
+.referThumb li {;display:inline-block; width:112px; margin-right:7px;}
+.referThumb li a {border:1px solid #ddd; display:block;}
+.referThumb li a:hover {border:1px solid #e82f34;}
+.referThumb li.on a {border:1px solid #e82f34;}
+
+/* conDivComm */
+.conDivComm {clear:both; position:relative; height:auto; overflow:hidden; margin-top:10px; margin-bottom:10px;}
+.conDivComm .commTitle {height:60px; border-bottom:1px solid #747474;}
+
+/* customer */
+.inforBox {clear:both; position:relative; border:6px solid #ededed; height:auto; overflow:hidden; margin-bottom:30px;}
+.inforBox .innerBox {float:left; width:329px; height:auto; overflow:hidden; background:url(/images/global/pix_line.gif) repeat-y right; padding-bottom:26px;}
+.noLine {background:none !important;}
+.innerBox p {text-align:center; background:none; margin:0; padding:0; min-height:15px;}
+.innerBox p.innerImg {padding:26px 0;}
+.innerBox p.mainTitle {font-size:20px; color:#393939; margin-bottom:5px;}
+.innerBox p.callCenter {font-size:28px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic'; margin-bottom:5px;}
+.innerBox p.subinfor {font-size:15px; margin-bottom:5px;}
+.innerBox p.quickArea {font-size:12px; color:#393939; margin-top:15px;}
+.quickGo a {display:inline-block; width:110px; height:20px; border:1px solid #c1c1c1; border-radius:20px; text-align:center; background:url(/images/global/ar_right.gif) no-repeat 90px center; line-height:20px;}
+.quickGo a:hover {border:1px solid #e92f34; border-radius:20px; color:#e92f34;}
+
+/*
+.cusCate {clear:both; position:relative; height:auto; overflow:hidden; border-top:2px solid #000; margin-bottom:30px;}
+.cusCate li {float:left; border-right:1px solid #c3c3c3; border-bottom:1px solid #c3c3c3; text-align:center; font-size:18px; letter-spacing:-1px; height:50px; line-height:50px; background:#f2f2f2;}
+.cusCate li a {display:block;}
+.cusCate li a:hover {background:#FFF;}
+.cusCate li.on a {background:#FFF;}
+*/
+/* .cusCate li:first-child {border-left:1px solid #c3c3c3;} */
+/* .cusCate li.cate3ip {width:332px;} */
+.cusCate li {display: none;}
+
+/* goods */
+.glsDefault {clear:both; position:relative; height:auto; overflow:hidden; margin-top:30px;}
+.glsDefault li { float: left; width:42%; height:auto; margin: 0 4%;  }
+.glsDefault li.end {}
+.glsBox {display:block; width:100%; height:auto; margin-bottom:0px;}
+.glsBox .imgSec {display:block; width:100%; height:auto; text-align:center;}
+.glsBox p {margin-left:0; margin-top:0; margin-bottom:10px; min-height:15px; background:none;}
+.glsBox p.gdsTitle {padding:17px 0 5px 12px; color:#393939; font-size:14px;}
+.glsBox p.gdsExp {padding:0px 0 0px 12px; color:#a6a6a6; font-size:12px;}
+
+.glsColor {clear:both; position:relative; height:auto; overflow:hidden; margin-top:30px;}
+.glsColor li {float:left; width:110px; height:auto; margin-right:17px;}
+.glsColor li.end {margin-right:0px;}
+.glsColor .glsColorBox {display:block; width:110px; height:auto; margin-bottom:0px;}
+.glsColorBox .imgSec {display:block; width:110px; height:110px; text-align:center;}
+.glsColorBox p {margin-left:0; margin-top:0; margin-bottom:10px; min-height:15px; background:none;}
+.glsColorBox p.gdsTitle {padding:17px 0 5px 12px; color:#393939; font-size:14px;}
+.glsColorBox p.gdsExp {padding:0px 0 0px 12px; color:#a6a6a6; font-size:12px;}
+
+/* cateTab */
+/*
+.cateTab {clear:both; position:relative; height:48px; border-bottom:1px solid #c3c3c3; margin-bottom:20px; margin-top:50px; width: 100%;  overflow-x: scroll; overflow-y: visible; -webkit-overflow-scrolling: touch;}
+.cateTab ul {  width: 2000px; }
+.cateTab li {float:left; width:125px; height:48px; text-align:center; font-size:18px; letter-spacing:-1px; line-height:48px; margin-top:0px;}
+.cateTab li a {display:block;}
+.cateTab li a:hover {border-left:1px solid #c3c3c3; border-top:1px solid #c3c3c3; border-right:1px solid #c3c3c3; border-bottom:1px solid #FFF; margin-top:-1px;}
+.cateTab li.on a {border-left:1px solid #c3c3c3; border-top:1px solid #c3c3c3; border-right:1px solid #c3c3c3; border-bottom:1px solid #FFF; margin-top:-1px;}
+*/
+
+
+
+/* catalog */
+.catalList {clear:both; position:relative; margin-top:20px; height:auto; overflow:hidden;}
+.catalList li {float:left; width:160px; margin:0 5px 40px 10px;}
+.catalList li.end {float:left; width:160px; margin-right:0px;}
+.catalBox {position:relative; width:160px; height:auto; overflow:hidden;}
+.catalBox .thumbCatal {display:block; width:160px; height:160px; margin-bottom:19px;}
+.catalBox .thumbCatal img { width: 100%; height: 100%; }
+.catalFunc {position:relative;}
+.viewFunc {float:left; width:75px; height:30px;}
+.viewFunc a {display:block; border:1px solid #686868; text-align:center; line-height:28px; font-family: notokr-bold, 'Nanum Barun Gothic'; font-size:12px; letter-spacing:-1px;}
+.viewFunc a:hover {border:1px solid #e92f34; color:#e92f34;}
+
+/* 메인 - 견적문의 */
+/*#reportArea {position:relative; clear:both; width:600px; height:auto; overflow:hidden; background:#FFF; margin:0 auto; padding-bottom:40px; z-index:99999; margin-top:0;} 원본*/
+#reportArea {position:relative; clear:both; width:100%; height:auto; overflow:hidden; background:#FFF; margin:0 auto; z-index:99999; margin-top:0;}
+
+/*.introReport {position:relative; width:576px; height:auto; overflow:hidden; margin-top:0px; margin:0 auto; padding-bottom:40px;} 원본*/
+.introReport {position:relative; width:100%; height:auto; overflow:hidden; margin-top:0px; margin:0 auto; padding-bottom:10px;}
+/*.btnClose {position:absolute; right:20px; top:30px;} 원본*/
+.btnClose {position:absolute; right:1%; top:7%;}
+.btnClose1 {position:absolute; right:7%; top:7%;}
+
+/*.inputReport {width:576px; height:auto; overflow:hidden; margin-top:12px; margin:0 auto; border-top:1px solid #ddd; padding-top:40px;} 원본*/
+.inputReport {width:100%; height:auto; overflow:hidden; margin-top:12px; margin:0 auto; border-top:1px solid #ddd; padding-top:15px;}
+
+.overlayPop {position:absolute; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999;}
+.regiTable table td { padding-top: 5px; padding-bottom: 5px; }
+
+/*.hiddenLayer_rp { z-index: 50000; width: 600px !important; height: auto; }원본*/
+.hiddenLayer_rp { z-index: 50000; width: 85% !important; height: auto; left:0% !important; margin-top:0 !important; margin-left:0 !important; top:0 !important;}
+/*
+.hiddenLayer_rp{
+	position: absolute;
+	_position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left:-300px;
+
+	bottom:0;
+	z-index: 9999;
+	visibility:hidden;
+	}
+.hiddenLayer_rp.open{visibility:visible;}
+.hiddenLayer_rp .bg{
+	position:fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	z-index: 9999;
+	opacity: .6;
+	filter: alpha(opacity=60);
+}
+*/
+
+/*btns*/
+.bbsBtnSet {position:absolute; right:0; top:0;}
+.bbsBtn a {display:inline-block; color:#92989c; border:1px solid #e3e3e3; width:118px; height:56px; font-size:13px; color:#92989c; line-height:56px; text-align:center; margin-right:10px;}
+.bbsBtn a:hover {border:1px solid #e92f34; color:#e92f34;}
+
+.buyMall {float: left;}
+.buyMall a {display:inline-block; border:1px solid #5d5d5d; color:#3d3e3f !important; width:98px; height:56px; font-size:13px; color:#92989c; line-height:56px; text-align:center;}
+.gdsQuest {display:none;position:absolute; left:0; top:0; border:1px solid #e3e3e3; width:234px; height:56px; font-size:13px; color:#92989c; line-height:56px; text-align:left;}
+.qTitle {padding:0 30px 0 30px;}
+.callNumber {padding:0 0px 0 15px; color:#393939; font-family: notokr-regular, 'Nanum Barun Gothic';}
+
+.btnTop {display:inline-block; border:1px solid #e3e3e3; width:98px; height:56px; background:url(/images/global/ar_top.gif) no-repeat center 15px; text-align:center; font-size:13px; color:#92989c; line-height:64px; vertical-align:-4px;float:right;}
+.btnTop a {display:block; color:#92989c;}
+
+/* navigation */
+#navScroll { position: fixed; right: 30px; top: 50%; z-index: 9999; opacity: 0.7; }
+#navScroll a { display: block; background-image: url('/images/ofella/common/cycle_off.png'); width: 12px; height: 12px; margin-bottom: 7px; }
+#navScroll a:hover, #navScroll a.on { background-image: url('/images/ofella/common/cycle_on.png'); }
+
+#btGlobalTop { background: url('/images/ofella/common/bt_ofella_top.png'); background-size: cover; opacity: 0.6; border: none; right: 20px; bottom: 20px; }
+
+/* align */
+.floatLeft {float:left !important;}
+.floatRight {float:right !important;}
+.arLeft {text-align:left;}
+.arCenter {text-align:center !important;}
+.arRight {text-align:right;}
+
+/* font */
+.bold {font-family: notokr-bold, 'Nanum Barun Gothic';}
+.tBrown {color:#b8a894;}
+.tBrown_d {color:#78533d;}
+.tBrown_l {color:#c0b1a0;}
+.tBlue {color:#0983b1;}
+.tBlue_l {color:#6ea9c8;}
+.tWhite {color:#FFF;}
+.tGray {color:#acacac;}
+.tGray a {color:#acacac;}
+
+/* width _ height */
+.hd215 {height:215px !important;}
+.hd320 {height:320px;}
+.hd690 {height:690px;}
+
+.colorYellow {background:#f9dba4;}
+.colorGray {background:#dedede;}
+
+.line {border-top:1px solid #393939; margin-top:30px; padding-bottom:30px;}
+
+/* 여백 */
+.maB0 {margin-bottom:0px !important;}
+.maR10 {margin-right:10px;}
+.maR15 {margin-right:15px;}
+.maR18 {margin-right:18px;}
+.maB18 {margin-bottom:18px;}
+.maT10 {margin-top:10px;}
+.maT20 {margin-top:20px;}
+.maT30 {margin-top:30px;}
+.maT35 {margin-top:35px;}
+.padT35 {padding-top:35px;}
+.maT60 {margin-top:60px !important;}
+.maB40 {margin-bottom:40px;}
+
+
+/* input */
+.inputGloSearch {width:88px; height:17px; background:#FFF; border:1px solid #FFF; padding-left:3px; margin-left:6px; margin-top:2px;}
+.inputBsearch {width:173px; height:27px; border:1px solid #e4e4e4; padding-left:10px;}
+.inputStore {width:148px; height:30px; border:1px solid #d6d6d6; background:#FFF; padding-left:10px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic';}
+
+.inputMsearch {width:240px; height:29px; background:#FFF; border:4px solid #ed2f30; padding-left:80px; padding-right:30px;}
+/* .inputBsearch {width:173px; height:27px; border:1px solid #e4e4e4; padding-left:10px;} */
+/* .inputBbs {height:36px; border:1px solid #e4e4e4; padding-left:10px; background:#FFF;} */
+/* .inputMulti {height:55px; background:#FFF; border:1px solid #FFF; font-family: notokr-regula, 'Nanum Barun Gothic';} */
+
+/*.inputMulti01 {width:393px; height:150px; background:#FFF; border:1px solid #ccc; font-family: notokr-regula, 'Nanum Barun Gothic';} 원본 */
+.inputMulti01 {width:98%; height:60px; background:#FFF; border:1px solid #ccc; font-family: notokr-regula, 'Nanum Barun Gothic';}
+
+.inputStore {width:148px; height:30px; border:1px solid #d6d6d6; background:#FFF; padding-left:10px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic';}
+.inputMem {height:38px; border:1px solid #d6d6d6; padding-left:10px; background:#FFF;}
+.selMem {border:1px solid #d6d6d6; padding:10px; background:#FFF; text-align:right;}
+.inputLogin {width:320px; height:45px; line-height:45px; font-size:16px; border:1px solid #cccccc; color:#656565; font-family: notokr-regula, 'Nanum Barun Gothic'; padding-left:20px;}
+.inputOrder {width:344px; height:45px; line-height:45px; font-size:16px; border:1px solid #cccccc; color:#656565; font-family: notokr-regula, 'Nanum Barun Gothic'; padding-left:0px; text-align:center;}
+.inputFind {width:360px; height:45px; line-height:45px; font-size:16px; border:1px solid #cccccc; color:#656565; font-family: notokr-regula, 'Nanum Barun Gothic'; padding-left:20px;}
+
+/* input */
+.inputGloSearch {width:94%; height:17px; background:#FFF; border:4px solid red; margin-top:2px; }
+.inputBsearch {width:173px; height:27px; border:1px solid #e4e4e4; padding-left:10px;}
+
+.inputStore {width:148px; height:30px; border:1px solid #d6d6d6; background:#FFF; padding-left:10px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic';}
+
+.inputMsearch {width:240px; height:29px; background:#FFF; border:4px solid #ed2f30; padding-left:80px; padding-right:30px;}
+/* .inputBsearch {width:173px; height:27px; border:1px solid #e4e4e4; padding-left:10px;} */
+/* .inputBbs {height:36px; border:1px solid #e4e4e4; padding-left:10px; background:#FFF;} */
+/* .inputMulti {height:55px; background:#FFF; border:1px solid #FFF; font-family: notokr-regula, 'Nanum Barun Gothic';} */
+
+.inputStore {width:148px; height:30px; border:1px solid #d6d6d6; background:#FFF; padding-left:10px; color:#393939; font-family: notokr-bold, 'Nanum Barun Gothic';}
+/*.inputMem {height:38px; border:1px solid #d6d6d6; padding-left:10px; background:#FFF;}*/
+.selMem {border:1px solid #d6d6d6; padding:10px; background:#FFF; text-align:right;}
+.inputLogin {width:320px; height:45px; line-height:45px; font-size:16px; border:1px solid #cccccc; color:#656565; font-family: notokr-regula, 'Nanum Barun Gothic'; padding-left:20px;}
+.inputOrder {width:344px; height:45px; line-height:45px; font-size:16px; border:1px solid #cccccc; color:#656565; font-family: notokr-regula, 'Nanum Barun Gothic'; padding-left:0px; text-align:center;}
+.inputFind {width:360px; height:45px; line-height:45px; font-size:16px; border:1px solid #cccccc; color:#656565; font-family: notokr-regula, 'Nanum Barun Gothic'; padding-left:20px;}
+
+
+
+.modal{padding: 5px 25px 25px 25px !important;}
+
+.wd68{width:50% !important;}
+.wd97{width:97% !important;}
+.wd100{width:100% !important;}
+
+.prl{padding-left:10px !important; padding-right:10px !important; margin-left:0 !important;}
+.prl1{padding-left:10px !important; padding-right:10px !important; margin-left:0 !important;}
+
+.borderbtn{display: inline-block; width: 100%; margin-top: 10px;}
+
+
+.newStyle {border:1px solid #d2d2d2; padding:16px 0; height:auto; overflow:hidden;}{}
+.inptst{border: 1px solid #ccc; height: 60px; width: 99% !important;}
+
+
+.moinput{width:95%; height:18px;}
+.moinput_e{width:41.5% !important; height:18px;}
+
+.mo_cellwd1{width:30% !important; height:18px;}
+.mo_cellwd1_1{width:22% !important; height:18px;}
+.mo_cellwd2{width:26% !important; height:18px;}
+
+.newbtn img{width:50%;}
+
+.notilist_btn{width: 40%; margin: 10px auto 0 auto;}
+
+
+
+
+
+/*신규제품 추가 _ 1021_ arcthan*/
+
+/* list.*/
+
+.gds_container {float:left; width:100%;}
+.gds_txt{padding:10px 0;}
+.list_title{margin:0 !important; line-height:40px;}
+.list_title_m {margin-top:0px !important;}
+.lt_s{margin-top:0px !important;text-align:left;}
+
+/* view */
+.gview_container{position: relative; width:100%; display: inline-block;}
+.pro_img {width:100%;}
+.view_title{margin-bottom:15px;padding-bottom:0 !important;}
+.view_desc{margin:0 10px;}
+.view_mark{margin:0 10px;}
+
+#prod_slider {width:100%;height:100%;}
+#prod_slider .sliderkit-panels{width:100%;height:100%;;}
+#prod_slider .sliderkit-panel img{min-width:360px;min-height:250px;}
+#prod_slider .sliderkit-panels-wrapper{width:100%;min-height:250px;}
+#prod_slider .sliderkit-panel-active{width:100%;}
+#prod_slider .sliderkit-go-btn{position:absolute; top:40%; z-index:999;}
+#prod_slider .sliderkit-go-btn.sliderkit-go-next{margin-right:-12px;}
+#prod_slider .sliderkit-go-btn img{width:80%;}
+#prod_slider .sliderkit-nav{position:relative;top:80%;margin-top:20px}
+
+.listthumb.detail{width:100%;height:300px;margin-top:28px;}
+
+/*search*/
+.isarticleBox th {margin:0;padding:10px 0;}
+.isarticleBox td {padding:10px 0;}
+.ismediaArticle{width:100%;}
+.ismediaArticle .isimgSec_h_media{width:100%;height:100%;background:#fff;padding:30px;}
+.ismediaArticle .isimgSec_h_media img{width:80%;height:80%;}
+.ismediaArticle .istxtSec{margin-top:3px;margin-left:3px;}
+.ismediaArticle .istxtSec p {padding:3px 3px 0 3px;}
+.ismediaSec{padding-top:0;padding:10px 0;}
+.resultBox .h2 + div{margin-top:10px;}
+.ismediaSec li{padding-bottom:10px;}
+
+
+
+
+
+
+
+
+
+.add_txt_area{float:left; width:100%; padding-top:30px;}
+.add_img_area{float:left; width:100%;}

@@ -1,0 +1,46 @@
+
+
+/*.container{width:100%; max-width:960px; height:1519px; position:relative; background:url(img/event_bg.jpg) no-repeat; margin:0 auto;}*/
+.container{width:100%; position:relative; margin:0 auto;}
+
+.content_p{max-width:890px; margin:0 auto; padding:0 35px; position:relative;}
+
+.content_f_all{width:100%; margin:0 auto;  position:relative; background:url(img/event_bg.jpg) no-repeat 50% 0; padding-bottom:90px;}
+
+.content_f{max-width:820px; margin:0 auto; padding:0 35px; position:relative;}
+
+
+
+.photo{padding:20px 0 30px 0; position:relative; border-bottom:2px dotted #c3c3c3;}
+.photo2{padding:40px 0 30px 0; position:relative; border-bottom:3px solid #949494;}
+.photo3{padding-top:40px; position:relative;}
+.photo4{padding-top:40px; position:relative;}
+
+.title_1{font-size:32px; color:#000; letter-spacing:-1px; text-align:center; padding:50px 0 45px 0; border-bottom:3px solid #949494; margin:0 auto;}
+
+
+.txt_name{display:block; margin-bottom:10px;}
+.post{width:250px; height:33px; margin-right:3px;}
+
+.dleft{float:left; width:430px;}
+.botitle{width:420px;}
+.bone{display:block; margin-top:8px;}
+.dright{width:348px; height:236px; background-color:#000; float:right;}
+
+
+.photo3_name{width:117px; height:33px;}
+.photo3_title{border-bottom:2px solid #DCDCDC;}
+.photo3 dl dd{border-bottom:2px solid #DCDCDC;}
+.txt_name1{display:block; padding:10px 0;}
+.cell_1{width:70px; height:33px;}
+.cell_2{width:120px; height:33px; margin:0 5px;}
+
+.add{width:340px; height:33px; margin:0 5px;}
+.dright_1{width:348px; height:236px; float:right;}
+.data_person{width:348px; height:228px; margin-top:10px;}
+
+
+.photo4_dleft{width:100%;}
+.photo4_trouble{width:100%; height:220px;}
+
+.complt_btn{text-align:center; margin-top:20px;}

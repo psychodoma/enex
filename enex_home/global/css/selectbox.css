@@ -1,0 +1,115 @@
+@CHARSET "UTF-8";
+
+
+#mserach {display:none !important;}
+.searchSel select#msearch{display:none;}
+
+.sbHolder{
+	background-color:#FFF;
+	border: solid 0px #bebebe;
+	font-size: 11px;
+	font-weight: bold;
+	height: 29px;
+	position: relative;
+	width: 80px;
+
+}
+.sbHolder:focus .sbSelector{
+	
+}
+.sbSelector{
+	display: block;
+	height: 29px;
+	left: 0;
+	line-height: 29px;
+	outline: none;
+	overflow: hidden;
+	position: absolute;
+	text-indent: 10px;
+	top: 0;
+	width: 80px;
+	 filter: alpha(opacity=0);
+	 	border: solid 0px #bebebe;
+	 -webkit-appearance: none;
+     -moz-appearance: none;
+	 -o-appearance: none;
+      appearance: none;
+}
+.sbSelector:link, .sbSelector:visited {
+	color: #4d4242;
+	outline: none;
+	text-decoration: none;
+}
+
+.sbSelector:hover{
+	color: #e92f33;
+	outline: none;
+	text-decoration: none;
+}
+
+.sbToggle{
+	background: url(/images/global/select_icons.png) 0 -119px no-repeat;
+	display: block;
+	height: 29px;
+	outline: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 30px;
+}
+.sbToggle:hover{
+	background: url(/images/global/select_icons.png) 0 -160px no-repeat;
+}
+.sbToggleOpen{
+	background: url(/images/global/select_icons.png) 0 -19px no-repeat;
+}
+.sbToggleOpen:hover{
+	background: url(/images/global/select_icons.png) 0 -66px no-repeat;
+}
+.sbHolderDisabled{
+	background-color: #3C3C3C;
+	border: solid 1px #515151;
+}
+.sbHolderDisabled .sbHolder{
+	
+}
+.sbHolderDisabled .sbToggle{
+	
+}
+.sbOptions{
+	background-color:#FFF;
+	border-top: solid 1px #FFF;
+	border-left: solid 1px #ed2f30;
+	border-right: solid 1px #ed2f30;
+	border-bottom: solid 1px #ed2f30;
+	list-style: none;
+	left: -1px;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 24px;
+	width: 80px;
+	z-index: 1;
+	overflow-y: auto;
+}
+.sbOptions li{
+	padding: 0 7px;
+}
+.sbOptions a{
+	border-bottom: dotted 1px #515151;
+	display: block;
+	outline: none;
+	padding: 7px 0 7px 3px;
+}
+.sbOptions a:link, .sbOptions a:visited{
+	color: #92989c;
+	text-decoration: none;
+}
+.sbOptions a:hover,
+.sbOptions a:focus,
+.sbOptions a.sbFocus{
+	color: #e92f33;
+}
+.sbOptions li.last a{
+	border-bottom: none;
+}

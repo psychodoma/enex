@@ -1,0 +1,58 @@
+/* #globalHeader, #homeHeader, #naviArea .naviMenu { display:none; } */
+/* .naviMenu { display:none; }*/
+ #homeHeader .logo { display: none; }
+#naviArea { height: auto; }
+#naviArea, #naviArea .subMenuSet { width: 100%; }
+#naviArea .subMenuSet .location { display: none; }
+#subCon { width: 98%;padding:0 1%; margin-bottom: 0;  }
+.conBox { width: 100%;  }
+#subCon .conBox .bbsBox > p > img { margin-top: 5px !important; }
+
+/* #globalFooter { display: none; } */
+
+
+/* HOME */
+
+#TabCompany1, #TabCompany2, #TabCompany3 { width: 100%; margin-left: 0;}
+
+.dgnAct {clear:both; position:relative; height:auto; overflow:hidden; }
+.dgnAct .dgnActTab {position:relative; margin-bottom:9px; width: 100%; }
+.dgnActTab .ar_left {position:absolute; left:0; top:18px;}
+.dgnActTab .ar_right {position:absolute; right:0; top:18px;}
+.dgnActTab .dgnYear {position:relative; width:959px; height:76px; margin:0 auto; background:url(http://image.enex.co.kr/images/home/operate/bg_dgntab.gif) repeat-x; overflow-x: scroll; overflow-y: hidden;  -webkit-overflow-scrolling: touch; }
+.dgnActTab .dgnYear ul { width: 2500px; }
+.dgnYear li {float:left; width:137px; height:76px; text-align:center; font-size:16px; line-height:60px;}
+.dgnYear li a {color:#393939; display:block; height:100%;}
+.dgnYear li a:hover {color:#FFF; background:url(http://image.enex.co.kr/images/home/operate/dgn_on.png) no-repeat;}
+.dgnYear li.on a {color:#FFF; background:url(http://image.enex.co.kr/images/home/operate/dgn_on.png) no-repeat;}
+
+.dgnCon {clear:both; position:relative; border-top:1px solid #ddd; padding-top:36px; width:100%; margin:0 auto; }
+.dgnCon p {line-height:26px;}
+.dgnCon p.dgnTitle {font-weight:bold; font-size:16px; color:#e82f34;}
+.dgnCon p.dgnTxt {font-size:13px; color:#393939;}
+.dgnCon .dgnimages {text-align:center; padding:20px;}
+.dgnCon .dgnimages img { }
+.dgnCon .dgnProinfo {border-top:1px solid #ddd; padding-top:20px;}
+.dgnProinfo p {line-height:24px; font-size:14px;}
+
+.dgnPro {clear:both; position:relative; margin-top:40px;}
+.dgnPro .ar_left {position:absolute; left:0; top:18px;}
+.dgnPro .ar_right {position:absolute; right:0; top:18px;}
+.dgnPro .dgnProList {position:relative; width:912px; height:70px; margin:0 auto; text-align: center;}
+.dgnPro .dgnProList ul { text-align: center; width: auto; margin: 0 auto; }
+.dgnProList li {float:left; width:70px; height:70px; background:url(http://image.enex.co.kr/images/home/operate/bg_dgnpro_off.gif) no-repeat; text-align:center; margin:0 3px; position:relative; }
+.dgnProList li img {margin-top:1px;}
+.dgnProList li a {display:block;}
+.dgnProList .cover {position:absolute; top:0; left:0; width:70px; height:70px; background:url(http://image.enex.co.kr/images/home/operate/bg_dgnpro.gif) no-repeat;}
+
+
+/* KITCHEN */
+
+.naviArea > ul { display: none; }
+
+/* OFELLA */
+
+#btGlobalTop { display: none; }
+
+
+td.bbsCon { padding: 0; }

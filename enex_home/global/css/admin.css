@@ -1,0 +1,52 @@
+body {
+	font-family: "돋움", "돋움체", "바탕체";
+	font-size: 12px;
+	color: 8a8a8a;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+td {
+	font-family: "돋움", "돋움체", "바탕체";
+	font-size: 12px;
+	color: 8a8a8a;
+}
+a:link {
+	font-family: "돋움", "돋움체", "바탕체";
+	font-size: 12px;
+	color: 8a8a8a;
+	text-decoration: none;
+}
+a:visited {
+	font-family: "돋움", "돋움체", "바탕체";
+	font-size: 12px;
+	color: 8a8a8a;
+	text-decoration: none;
+}
+a:hover {
+	font-family: "돋움", "돋움체", "바탕체";
+	font-size: 12px;
+	color: 000000;
+	text-decoration: underline;
+}
+.txt_11g {
+	font-size: 11px;
+	color: a7a7a7;
+}
+
+.checkbox {
+	border: 1px solid #FFFFFF;
+}
+.txtbox {
+
+	border: 1px solid #d8d8d8;
+	font-family: "돋움", "돋움체", "바탕체";
+	font-size: 12px;
+	color: 8a8a8a;
+}
+.txtrow {
+	line-height: 16px;
+}
+
+img {border:0}
