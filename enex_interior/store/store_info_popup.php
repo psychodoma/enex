@@ -54,7 +54,6 @@ function get_prd_table_id($table,$idx){
 	echo $result[1];
 }
 
-
 ?>
 <script>
 	function closePopup() {

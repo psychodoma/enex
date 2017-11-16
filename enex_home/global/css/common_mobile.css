@@ -56,7 +56,7 @@ img {max-width:100%;}
 .utilMenu li {float:left; margin-right:8px; padding-right:9px; background:url(/images/global/pix_util.gif) no-repeat right 6px; }
 .utilMenu li:last-child {background:none; margin-right:0; padding-right:0;}
 
-#homeHeader .naviArea { clear:both; position:relative; width:100%; overflow:hidden; text-align:center;/*  margin-top:20px;  */color:#393939; font-size:12px; letter-spacing:-1.5px; height:auto;} 
+#homeHeader .naviArea { clear:both; position:relative; width:100%; overflow:hidden; text-align:center;/*  margin-top:20px;  */color:#393939; font-size:12px; letter-spacing:-1.5px; height:auto;}
 .naviArea li a { height: 16px; line-height: 16px; color: gray; }
 .naviArea li {display:inline-block; padding:5px 5px 0 5px; font-family: notokr-regular, '맑은 고딕', 'AppleSDGothic'; line-height: 16px; margin-top:2px; }
 .naviArea li:last-child { margin-top: 0;}
